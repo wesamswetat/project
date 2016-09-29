@@ -1,0 +1,159 @@
+<div class="admin-add-window">
+    <h3> הוספת חלון </h3>
+    <form
+            ng-submit="send(addWindowForm.$valid)"
+            name="addWindowForm"
+            role="form"
+            novalidate="novalidate">
+
+        <div class="row">
+
+            <div class="form-group col-md-2">
+                <label for="company" class="control-label">שם חברה</label>
+                <input
+                        required="required"
+                        ng-model="window.company"
+                        type="text"
+                        id="company"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="funcode" class="control-label">שם פונקציה</label>
+                <input
+                        required="required"
+                        ng-model="window.funcode"
+                        type="text"
+                        id="funcode"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="sedraName" class="control-label">שם סדרה</label>
+                <input
+                        required="required"
+                        ng-model="window.sedraName"
+                        type="text"
+                        id="sedraName"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="sedraNum" class="control-label">מספר חברה</label>
+                <input
+                        required="required"
+                        ng-model="window.sedraNum"
+                        type="text"
+                        id="sedraNum"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="rowdsWinds" class="control-label">מספר נתיבים</label>
+                <input
+                        required="required"
+                        ng-model="window.rowdsWinds"
+                        type="text"
+                        id="rowdsWinds"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-10">
+                <label for="des" class="control-label">תיאור חלון</label>
+                <input
+                        required="required"
+                        ng-model="window.des"
+                        type="text"
+                        id="des"
+                        class="form-control">
+            </div>
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="num" class="control-label">מספר פרופילים בחלון לפי קטלוג של החברה</label>
+                <input
+                        required="required"
+                        ng-model="num"
+                        ng-change="applyChange(num)"
+                        type="number"
+                        min="1"
+                        id="num"
+                        class="form-control">
+            </div>
+
+            <div class="col-xs-10">
+                <table class="table table-bordered table-striped">
+                    <tr ng-repeat="profel in numOfProfels track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td class="row">
+
+                            <div class="form-group col-md-2">
+                                <input
+                                        required="required"
+                                        placeholder="מק''ט פרופיל"
+                                        ng-model="window.makat[$index]"
+                                        type="text"
+                                        class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <input
+                                        ng-model="window.profelDes[$index]"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="תאור"
+                                        required="required">
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <input
+                                        ng-model="window.cuts[$index]"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="כמות לחיתוך"
+                                        required="required">
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <input
+                                        ng-model="window.formola[$index]"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="נוסחת חיתוך"
+                                        required="required">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-group col-md-3">
+                <button
+                        type="submit"
+                        class="btn btn-primary">שמור
+                    <i class="fa fa-btn fa-save fa-rotate-180"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <pre style="direction: ltr">{{window | json}}</pre>
+</div>
+
+<style>
+
+    .admin-add-window {
+        margin-right: 30px;
+    }
+
+    .admin-add-window .des-input {
+        width: 85%;
+    }
+
+</style>

@@ -1,0 +1,46 @@
+<section class="container chose-window">
+
+    <div class="panel panel-default">
+        <div class="panel-heading"> הוספת חלון/דלת</div>
+        <div class="panel-body">
+            <div class="row">
+
+                <div class="form-group  col-xs-12 col-sm-6 col-md-2">
+                    <label for="company"> בחר חברה </label>
+                    <select name="company"
+                            id="company"
+                            class="form-control"
+                            ng-options="company as company for company in companyNames"
+                            ng-model="windowInfoModel.company"
+                            ng-change="select('company', windowInfoModel.company)">
+                    </select>
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-6 col-md-2">
+                    <label for="serial"> בחר סדרה </label>
+                    <select name="serial"
+                            id="serial"
+                            class="form-control"
+                            ng-options="serial as serial for serial in companySerials"
+                            ng-model="windowInfoModel.serial"
+                            ng-change="select('serial', serial)">
+                    </select>
+                </div>
+
+                <div class="form-group  col-xs-12 col-sm-12 col-md-8">
+                    <label for="window"> בחר חלון </label>
+                    <select name="window"
+                            id="window"
+                            class="form-control"
+                            ng-options="window.name for window in serialWindows track by window.value"
+                            ng-model="windowInfoModel.window"
+                            ng-change="select('window', window.name)">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <pre>{{windowInfoModel | json}}</pre>
+
+</section>

@@ -1,0 +1,45 @@
+
+<div ng-controller="adminAddWindowController">
+    <ul class="side-menu">
+        <!--<li><a><i class="fa fa-home"></i> בית </a></li>-->
+        <li><a ui-sref=".addwindow"><i class="fa fa-plus"></i> הוספת חלון/דלת </a></li>
+    </ul>
+
+    <div class="content">
+        <ui-view></ui-view>
+    </div>
+</div>
+
+
+<style>
+
+    .side-menu{
+        width: 15%;
+        float: right;
+        font-size: 1.3em;
+        margin: 0;
+        padding: 0;
+    }
+
+    .side-menu{
+        background-color: #d5d5d5;
+        list-style: none;
+    }
+
+    .side-menu > li{
+        margin-right: 35px;
+    }
+
+    .side-menu >li > a{
+       text-decoration: none;
+        padding: 0 30px;
+    }
+
+    .content{
+        width: 85%;
+        float: left;
+    }
+
+
+</style>
+

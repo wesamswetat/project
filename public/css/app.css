@@ -1,0 +1,11 @@
+
+body{
+    direction: rtl;
+}
+
+/* ################## Add Window Directive ###################*/
+
+.chose-window{
+    margin-top: 15px;
+    direction: rtl;
+}
