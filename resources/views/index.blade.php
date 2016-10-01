@@ -50,6 +50,7 @@
 
 <!-- App Controller -->
 <script src="{{asset('app/controllers/mainController.js')}}"></script>
+<script src="{{asset('app/controllers/homeController.js')}}"></script>
 <script src="{{asset('app/controllers/CutByWindowController.js')}}"></script>
 <script src="{{asset('app/controllers/CutByProfileController.js')}}"></script>
 <script src="{{asset('app/controllers/loginController.js')}}"></script>

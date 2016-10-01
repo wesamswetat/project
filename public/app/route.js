@@ -20,7 +20,8 @@
         ////////////
             .state('home', {
                 url: '/home',
-                template: '<buttons-directive></buttons-directive><div ui-view></div>'
+                template: '<buttons-directive></buttons-directive><div ui-view></div>',
+                controller: 'homeController'
             })
             .state('home.' + navigationButtons[0], {
                 url: '/' + navigationButtons[0],

@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-group col-md-2">
-                <label for="sedraNum" class="control-label">מספר חברה</label>
+                <label for="sedraNum" class="control-label">מספר סדרה</label>
                 <input
                         required="required"
                         ng-model="window.sedraNum"
@@ -58,7 +58,7 @@
                         class="form-control">
             </div>
 
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-10 ">
                 <label for="des" class="control-label">תיאור חלון</label>
                 <input
                         required="required"
@@ -80,7 +80,30 @@
                         ng-change="applyChange(num)"
                         type="number"
                         min="1"
+                        max="50"
                         id="num"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-1 ">
+                <label for="h" class="control-label">גבהים</label>
+                <input
+                        required="required"
+                        ng-model="windowTemp.hl.h"
+                        type="number"
+                        min="1"
+                        id="h"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-1">
+                <label for="l" class="control-label">רוחבים</label>
+                <input
+                        required="required"
+                        ng-model="windowTemp.hl.l"
+                        type="number"
+                        min="1"
+                        id="l"
                         class="form-control">
             </div>
 
@@ -94,14 +117,14 @@
                                 <input
                                         required="required"
                                         placeholder="מק''ט פרופיל"
-                                        ng-model="window.makat[$index]"
+                                        ng-model="windowTemp.makat[$index]"
                                         type="text"
                                         class="form-control">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <input
-                                        ng-model="window.profelDes[$index]"
+                                        ng-model="windowTemp.profelDes[$index]"
                                         class="form-control"
                                         type="text"
                                         placeholder="תאור"
@@ -110,7 +133,7 @@
 
                             <div class="form-group col-md-2">
                                 <input
-                                        ng-model="window.cuts[$index]"
+                                        ng-model="windowTemp.cuts[$index]"
                                         class="form-control"
                                         type="text"
                                         placeholder="כמות לחיתוך"
@@ -119,7 +142,7 @@
 
                             <div class="form-group col-md-3">
                                 <input
-                                        ng-model="window.formola[$index]"
+                                        ng-model="windowTemp.formola[$index]"
                                         class="form-control"
                                         type="text"
                                         placeholder="נוסחת חיתוך"
@@ -143,17 +166,25 @@
     </form>
 
 
-    <pre style="direction: ltr">{{window | json}}</pre>
+    <pre class="col-md-10" style="direction: ltr">{{window | json}}</pre>
+    <pre class="col-md-10" style="direction: ltr">{{windowTemp | json}}</pre>
 </div>
 
 <style>
 
     .admin-add-window {
-        margin-right: 30px;
+        padding-right: 30px;
+        width: 100%;
     }
 
     .admin-add-window .des-input {
         width: 85%;
+    }
+
+    .admin-add-window .row {
+
+        margin-left: 0;
+
     }
 
 </style>

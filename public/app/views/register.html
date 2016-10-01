@@ -19,6 +19,7 @@
                                         required="required"
                                         id="name"
                                         type="text"
+                                        ng-minlength="3"
                                         ng-model="newUser.name"
                                         class="form-control"
                                         name="name" >
@@ -48,6 +49,7 @@
                                         required="required"
                                         id="password"
                                         type="password"
+                                        ng-minlength="6"
                                         ng-model="newUser.password"
                                         class="form-control"
                                         name="password">
@@ -56,18 +58,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password_confirm" class="col-md-4 control-label">אישור סיסמה</label>
+                            <label for="password_confirmation" class="col-md-4 control-label">אישור סיסמה</label>
                             <div class="col-md-6">
                                 <input
                                         required="required"
-                                        id="password_confirm"
+                                        id="password_confirmation"
                                         type="password"
-                                        ng-model="newUser.password_confirm"
+                                        ng-minlength="6"
+                                        ng-model="newUser.password_confirmation"
                                         class="form-control"
                                         name="password_confirmation">
 
                             </div>
                         </div>
+                        <span class="errorMesseg col-md-6 col-md-offset-4" ng-if="errorMesseg" >{{errorMesseg}}</span>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -90,3 +94,9 @@
     </div>
 </div>
 
+<style>
+    .errorMesseg{
+        color: #f00;
+        margin-bottom: 10px;
+    }
+</style>

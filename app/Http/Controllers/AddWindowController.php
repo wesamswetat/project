@@ -12,7 +12,8 @@ class AddWindowController extends Controller
 {
     //
 
-    public function index(){
+    public function index()
+    {
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->admin_level === 1) {
@@ -27,12 +28,39 @@ class AddWindowController extends Controller
         return redirect('/');
     }
 
-    public function addWindowWithProfels(Request $request){
+    public function addWindowWithProfels(Request $request)
+    {
 
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->admin_level === 1) {
-                return json_encode($request->data);
+
+                $result = DB::table('windows')->insert(
+                    [
+                        'company' => $request->company, 'des' => $request->des, 'sedra_name' => $request->sedraName,
+                        'fun_code' => $request->funcode, 'h_l' => $request->hl, 'profel_cuts' => $request->cuts,
+                        'profel_des' => $request->profelDes, 'profel_formela' => $request->formola,
+                        'profel_makat' => $request->makat, 'rowds_winds' => $request->rowdsWinds,
+                        'sedra_num' => $request->sedraNum
+                    ]
+                );
+
+                if ($result) {
+
+                    DB::table('company')->insert(['company_name' => $request->company]);
+                    DB::table('sedrot')->insert(
+                        [
+                            'company_name' => $request->company, 'sedra_name' => $request->sedraName,
+                            'sedra_num' => $request->sedraNum
+                        ]
+                    );
+
+                    return 'true';
+
+                } else {
+                    return 'false';
+                }
+
             } else {
                 return redirect('/');
             }

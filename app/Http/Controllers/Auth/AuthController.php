@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Auth;
 
 class AuthController extends Controller
 {
@@ -95,5 +94,16 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+
+    public function postRegister(Request $request)
+    {
+
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+    }
 
 }

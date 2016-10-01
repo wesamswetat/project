@@ -6,7 +6,7 @@
 
     var mainController = angular.module('alom');
 
-    mainController.controller('mainController', mainControllerFunction);
+    mainController.controller('maainController', mainControllerFunction);
 
     function mainControllerFunction($scope) {
 

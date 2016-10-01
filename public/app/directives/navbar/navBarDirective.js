@@ -1,5 +1,7 @@
 (function () {
 
+    "use strict";
+
     var navBar = angular.module('alom');
 
     navBar.directive('navBar', function ($http, $state, localDataService) {
@@ -20,7 +22,7 @@
                         case 'logout':
                             $http({method: 'GET', url: URL+'/logout'})
                                 .then(function successCallBack(response) {
-                                    $state.go('home'+buttonGrop[0]);
+                                    $state.go('home');
                                 });
                             localDataService.setUser({});
                             break;
