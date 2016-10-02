@@ -1,6 +1,4 @@
 
-# Laravel PHP Framework
-
 # Library Used
 
 * [angularjs](https://angularjs.org/) End side
@@ -9,14 +7,7 @@
 * [Font Awesome](http://fontawesome.io/) Font and Icons
 * [Angular-auto-validate](http://jonsamwell.github.io/angular-auto-validate/) An automatic validation
 
-## TO DO LIST
+# TO DO LIST
 
 
-## Contributing
-
-
-## Security Vulnerabilities
-
-
-## License
 

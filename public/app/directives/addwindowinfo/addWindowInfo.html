@@ -1,0 +1,99 @@
+<hr>
+<form ng-submit="onSubmit()"
+      novalidate="novalidate"
+      name="addWindow"
+      role="form">
+
+    <div class="row">
+        <div class="form-group col-md-2">
+            <div>
+                <input
+                        required="required"
+                        placeholder="גובה"
+                        id="height"
+                        type="number"
+                        ng-minlength="2"
+                        min="0"
+                        max="600"
+                        ng-model="windowHeightWidthAndInfo.height"
+                        class="form-control"
+                        name="name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-2">
+            <div>
+                <input
+                        required="required"
+                        placeholder="רוחב"
+                        id="width"
+                        type="number"
+                        ng-minlength="2"
+                        min="0"
+                        max="600"
+                        ng-model="windowHeightWidthAndInfo.width"
+                        class="form-control"
+                        name="name">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-2">
+            <div>
+                <input
+                        placeholder="מחיר"
+                        id="cost"
+                        type="number"
+                        ng-minlength="2"
+                        min="0"
+                        ng-model="windowHeightWidthAndInfo.cost"
+                        class="form-control"
+                        name="name">
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <div>
+                <input
+                        placeholder="תיאור חלון"
+                        id="windowDes"
+                        type="text"
+                        ng-minlength="2"
+                        min="0"
+                        ng-model="windowHeightWidthAndInfo.windowDes"
+                        class="form-control"
+                        name="name">
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            <div>
+                <input
+                        placeholder="תיאור זכוכית"
+                        id="glassDes"
+                        type="text"
+                        ng-minlength="2"
+                        min="0"
+                        ng-model="windowHeightWidthAndInfo.glassDes"
+                        class="form-control"
+                        name="name">
+            </div>
+        </div>
+
+        <button
+                type="submit"
+                class="btn btn-primary"> הוסף
+            <i class="fa fa-btn fa-plus"></i>
+        </button>
+
+        <button
+                class="btn btn-warning"
+                type="reset">איפוס
+            <i class="fa fa-btn fa-remove"></i>
+        </button>
+
+    </div>
+
+</form>

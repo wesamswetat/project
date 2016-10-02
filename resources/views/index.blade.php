@@ -47,6 +47,8 @@
 <!-- MY Services -->
 <script src="{{asset('app/services/adminService.js')}}"></script>
 <script src="{{asset('app/services/localDataServeice.js')}}"></script>
+<script src="{{asset('app/services/temporaryDataService.js')}}"></script>
+<script src="{{asset('app/services/calculatorService.js')}}"></script>
 
 <!-- App Controller -->
 <script src="{{asset('app/controllers/mainController.js')}}"></script>
@@ -63,5 +65,6 @@
 <script src="{{asset('app/directives/navbar/navBarDirective.js')}}"></script>
 <script src="{{asset('app/directives/buttongrope/buttonGroupDirective.js')}}"></script>
 <script src="{{asset('app/directives/addwindow/addWindowDirective.js')}}"></script>
+<script src="{{asset('app/directives/addwindowinfo/addWindowinfo.js')}}"></script>
 </body>
 </html>

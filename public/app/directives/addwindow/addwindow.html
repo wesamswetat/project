@@ -21,7 +21,7 @@
                     <select name="serial"
                             id="serial"
                             class="form-control"
-                            ng-options="serial as serial for serial in companySerials"
+                            ng-options="serial as serial.sedra_name + ' ' + serial.sedra_num for serial in companySerials"
                             ng-model="windowInfoModel.serial"
                             ng-change="select('serial', serial)">
                     </select>
@@ -32,15 +32,17 @@
                     <select name="window"
                             id="window"
                             class="form-control"
-                            ng-options="window.name for window in serialWindows track by window.value"
+                            ng-options="window as window.des for window in WindowsDesAndFuncode"
                             ng-model="windowInfoModel.window"
-                            ng-change="select('window', window.name)">
+                            ng-change="select('window', windowInfoModel.window.fun_code)">
                     </select>
                 </div>
             </div>
+            <add-window-info ng-if="showWindowInputs" window="{{windowSelected[0]}}"></add-window-info>
         </div>
     </div>
 
-    <pre>{{windowInfoModel | json}}</pre>
+    <pre style="direction: ltr">{{windowInfoModel | json}}</pre>
+    <pre style="direction: ltr">{{data | json}}</pre>
 
 </section>

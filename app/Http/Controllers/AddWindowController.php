@@ -47,13 +47,25 @@ class AddWindowController extends Controller
 
                 if ($result) {
 
-                    DB::table('company')->insert(['company_name' => $request->company]);
-                    DB::table('sedrot')->insert(
-                        [
-                            'company_name' => $request->company, 'sedra_name' => $request->sedraName,
-                            'sedra_num' => $request->sedraNum
-                        ]
-                    );
+                    $ifCompanyInCompanyTable =  DB::table('company')->where('company_name',$request->company )->first();
+                    $ifSedraInSedrotTable = DB::table('sedrot')->where('sedra_num',$request->sedraName )->first();
+
+                    if (! $ifCompanyInCompanyTable){
+                        DB::table('company')->insert(
+                            [
+                                'company_name' => $request->company
+                            ]
+                        );
+                    }
+
+                    if (! $ifSedraInSedrotTable){
+                        DB::table('sedrot')->insert(
+                            [
+                                'company_name' => $request->company, 'sedra_name' => $request->sedraName,
+                                'sedra_num' => $request->sedraNum
+                            ]
+                        );
+                    }
 
                     return 'true';
 
