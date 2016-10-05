@@ -1,0 +1,33 @@
+<table ng-if="windows.length > 0" class="table table-bordered table-striped">
+
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>רוחב</th>
+        <th>גובהה</th>
+        <th>חברה</th>
+        <th>סדרה</th>
+        <th>תאור חלון</th>
+        <th>מס' נתיבים</th>
+        <th>מחיר</th>
+        <th>מחיקה</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="window in windows track by $index">
+        <th scope="row">{{$index + 1}}</th>
+        <td>{{window.width}}</td>
+        <td>{{window.height}}</td>
+        <td>{{window.company}}</td>
+        <td>{{window.sedra_name}} {{window.sedra_num}}</td>
+        <td>{{window.catalogDes}}<br>{{window.windowDes}}<br>{{window.glassDes}}</td>
+        <td>{{window.rowds_winds}}</td>
+        <td>{{window.price}}</td>
+        <td></td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+<pre> {{windows | json}}</pre>

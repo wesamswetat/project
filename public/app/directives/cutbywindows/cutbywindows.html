@@ -1,0 +1,40 @@
+<section class="container chose-window">
+
+    <div  ng-repeat="( key, funcode ) in windowsTable" class="panel panel-info">
+        <div class="panel-heading "> {{funcode[0]}}</div>
+        <div class="panel-body">
+
+            <button class="btn btn-info" ng-click="toPdf(key)">to pdf</button>
+
+            <table id="{{key}}" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th ng-repeat="item in funcode[1]">{{item}}</th>
+                </tr>
+                <tr>
+                    <th ng-repeat="item in funcode[2]">{{item}}</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                <tr ng-repeat="array in funcode track by $index" ng-if="$index > 3">
+                    <td  ng-repeat="item in array track by $index" >{{funcode[3][$index]}}#<br>{{item}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</section>
+
+<style>
+    table{
+        text-align: center ;
+    }
+    table thead tr th{
+        text-align: center ;
+    }
+</style>

@@ -66,5 +66,7 @@
 <script src="{{asset('app/directives/buttongrope/buttonGroupDirective.js')}}"></script>
 <script src="{{asset('app/directives/addwindow/addWindowDirective.js')}}"></script>
 <script src="{{asset('app/directives/addwindowinfo/addWindowinfo.js')}}"></script>
+<script src="{{asset('app/directives/windowsadded/windowsAdded.js')}}"></script>
+<script src="{{asset('app/directives/cutbywindows/cutbywindows.js')}}"></script>
 </body>
 </html>

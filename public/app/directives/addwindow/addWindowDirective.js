@@ -13,7 +13,7 @@
     function addWindowDirectiveFunction($http, localDataService, temporaryDataService, calculatorService) {
         return {
             restrict: 'EA',
-            scope:{},
+            scope: {},
             replace: true,
             templateUrl: 'app/directives/addwindow/addwindow.html',
             link: function (scope, elme, attr) {
@@ -31,7 +31,6 @@
 
                     switch (from) {
                         case 'company':
-
                             scope.companySerials = temporaryDataService.getCompanySedrot(value) ||
                                 $http({method: 'GET', url: URL + '/company/' + value})
                                     .then(function successCallBack(response) {
@@ -43,7 +42,9 @@
                         // end case company
                         case 'serial':
 
-                            scope.WindowsDesAndFuncode = temporaryDataService.getWindowsDesAndFuncode() ||
+                            var companyAndSedra = scope.windowInfoModel.serial.company_name + scope.windowInfoModel.serial.sedra_num;
+
+                            scope.WindowsDesAndFuncode = temporaryDataService.getWindowsDesAndFuncode(companyAndSedra) ||
 
                                 $http({
                                     method: 'GET', url: URL + '/company/windows/'

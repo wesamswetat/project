@@ -27,9 +27,9 @@
                 url: '/' + navigationButtons[0],
                 template: '<add-window-directive></add-window-directive>'
             })
-            .state('home.cutbywindow', {
-                url: '/cutbywindow',
-                template: 'cutbywindow'
+            .state('home.' + navigationButtons[1], {
+                url: '/' + navigationButtons[1],
+                template: '<cut-by-windows></cut-by-windows>'
             })
             .state('home.order', {
                 url: '/order',

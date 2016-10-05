@@ -9,16 +9,19 @@
 
     windowInfo.directive('addWindowInfo', addWindowInfoFunction);
 
-    function addWindowInfoFunction(calculatorService) {
+    function addWindowInfoFunction(calculatorService, temporaryDataService) {
         return{
             restrict: 'EA',
-            replce: true,
             scope: {},
             templateUrl: 'app/directives/addwindowinfo/addWindowInfo.html',
             link: function (scope, elme, attr) {
                 scope.windowHeightWidthAndInfo = {};
 
                 scope.onSubmit = function () {
+                    scope.windowHeightWidthAndInfo.price =
+                        scope.windowHeightWidthAndInfo.cost * scope.windowHeightWidthAndInfo.height / 100 *
+                        scope.windowHeightWidthAndInfo.width / 100 ;
+
                     calculatorService.setWindowObjectFromLocalAddWindowInfoDirective(scope.windowHeightWidthAndInfo);
                     calculatorService.calculate();
                 }

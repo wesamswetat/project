@@ -14,10 +14,11 @@
                 scope.navigationButtons = localDataService.buttonsGroup;
                 scope.btnDanger = '';
                 scope.button = scope.navigationButtons[0];
-                $state.go('.'+scope.button);
                 scope.active = function (index) {
+                    console.log(index);
+                    console.log(scope.navigationButtons[index]);
                     scope.button = scope.navigationButtons[index];
-                    $state.go('.'+scope.button);
+                    $state.go('home.'+scope.button);
                 }
             }
         };
