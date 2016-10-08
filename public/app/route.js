@@ -31,9 +31,9 @@
                 url: '/' + navigationButtons[1],
                 template: '<cut-by-windows></cut-by-windows>'
             })
-            .state('home.order', {
-                url: '/order',
-                template: 'order'
+            .state('home.' + navigationButtons[2], {
+                url: '/' + navigationButtons[2],
+                template: '<cute-by-profel></cute-by-profel>'
             })
             /////////////
             /// Auth ///

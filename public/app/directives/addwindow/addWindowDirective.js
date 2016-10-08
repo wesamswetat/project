@@ -65,15 +65,17 @@
                             break;
                         // end case serial
                         case 'window':
-
-                            scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value) ||
-                                $http({method: 'GET', url: URL + '/window/' + value})
-                                    .then(function successCallBack(response) {
-                                        scope.windowSelected = response.data;
-                                        temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
-                                        calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
-                                    });
-                            scope.showWindowInputs = true;
+                            if (value != undefined) {
+                                scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value) ||
+                                    $http({method: 'GET', url: URL + '/window/' + value})
+                                        .then(function successCallBack(response) {
+                                            scope.windowSelected = response.data;
+                                            temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
+                                            calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
+                                            console.log(scope.windowSelected[0]);
+                                        });
+                                scope.showWindowInputs = true;
+                            }
                             break;
                         // end case window
                         default :

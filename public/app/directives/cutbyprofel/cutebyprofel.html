@@ -1,0 +1,16 @@
+<section class="container">
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <!--<tr>-->
+            <!--<th>מק"ט</th>-->
+        <!--</tr>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="( makat , medot ) in cutsByProfel track by $index">
+            <td >{{makat}}</td>
+            <td ng-repeat="( meda , numOfCuts ) in medot">{{numOfCuts}} <br> {{meda}}</td>
+        </tr>
+        </tbody>
+    </table>
+</section>

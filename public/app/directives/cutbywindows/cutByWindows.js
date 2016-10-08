@@ -9,7 +9,7 @@
 
     cutByWindows.directive('cutByWindows', cutByWindowsFunction);
 
-    function cutByWindowsFunction(temporaryDataService) {
+    function cutByWindowsFunction(temporaryDataService, localDataService, $http) {
         return {
             restrict: 'EA',
             scope: {},
@@ -17,9 +17,6 @@
             link: function (scope, elem, attr) {
                 scope.windowsTable = temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot();
 
-                scope.toPdf = function (funcode) {
-
-                }
             }
         }
 

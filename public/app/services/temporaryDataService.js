@@ -17,7 +17,8 @@
             windowsDesAndFuncode = {},
             windowsFullObjectFromMySql = {},
             arrayOfWindowsAddedInAddWindowPage = [],
-            arrayOfWindowsAfterCalculatorOfMedot = {};
+            arrayOfWindowsAfterCalculatorOfMedot = {},
+            arrayOfProfelemToCute = {};
 
         tempData.setCompanySedrot = function (company, sedrot) {
             companySedrot[company] = sedrot;
@@ -48,7 +49,8 @@
             if (angular.isNumber(windowOrWindowIdToDelet)){
                 arrayOfWindowsAddedInAddWindowPage.splice(windowOrWindowIdToDelet, 1);
             } else if (angular.isObject(windowOrWindowIdToDelet)){
-                var temp = angular.copy(windowOrWindowIdToDelet, temp);
+                var temp = {} ;
+                angular.copy(windowOrWindowIdToDelet, temp);
                 arrayOfWindowsAddedInAddWindowPage.push(temp);
             }
         };
@@ -69,6 +71,38 @@
 
         tempData.getArrayOfWindowsAfterCalculatorOfMedot = function (funcode) {
             return funcode ? arrayOfWindowsAfterCalculatorOfMedot[funcode] : arrayOfWindowsAfterCalculatorOfMedot;
+        };
+
+        tempData.setArrayOfProfelemToCute = function (profelemObject, numToCutObject, medotObject) {
+
+
+
+            for (var key in profelemObject){
+                var
+                    tempToAdd,tempKey = {};
+
+                if (profelemObject.hasOwnProperty(key)){
+                    if (profelemObject[key] in arrayOfProfelemToCute){
+                        if(medotObject[key] in arrayOfProfelemToCute[profelemObject[key]]){
+                            if (numToCutObject[key] != '+'){
+                                tempToAdd = arrayOfProfelemToCute[profelemObject[key]];
+                                tempToAdd[medotObject[key]] = eval(tempToAdd[medotObject[key]]) + eval(numToCutObject[key]);
+                            }
+                        } else {
+                            tempKey[medotObject[key]] = numToCutObject[key];
+                            tempToAdd = arrayOfProfelemToCute[profelemObject[key]];
+                            tempToAdd[medotObject[key]] =  numToCutObject[key] ;
+                        }
+                    } else {
+                        tempKey[medotObject[key]] = numToCutObject[key];
+                        arrayOfProfelemToCute[profelemObject[key]] =  tempKey ;
+                    }
+                }
+            }
+        };
+
+        tempData.getArrayOfProfelemToCute = function () {
+            return arrayOfProfelemToCute;
         };
 
         return tempData;

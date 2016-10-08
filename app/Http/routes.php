@@ -42,3 +42,4 @@ Route::post('/admin/addwindow', 'AddWindowController@addWindowWithProfels');
 Route::get('/company/{name}', 'getWindowsInfoController@getSedrotOfCompany');
 Route::get('/company/windows/{company}/{sedra}', 'getWindowsInfoController@getAllWindowsOfSedra');
 Route::get('/window/{funcode}', 'getWindowsInfoController@getWindowFullObject');
+

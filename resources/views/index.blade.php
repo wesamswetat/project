@@ -68,5 +68,6 @@
 <script src="{{asset('app/directives/addwindowinfo/addWindowinfo.js')}}"></script>
 <script src="{{asset('app/directives/windowsadded/windowsAdded.js')}}"></script>
 <script src="{{asset('app/directives/cutbywindows/cutbywindows.js')}}"></script>
+<script src="{{asset('app/directives/cutbyprofel/cuteByProfel.js')}}"></script>
 </body>
 </html>

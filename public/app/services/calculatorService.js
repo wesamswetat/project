@@ -71,6 +71,11 @@
 
                 console.log(formolas);
 
+                /* ######## Cute By Profelem Calculator ###### */
+
+                temporaryDataService.setArrayOfProfelemToCute(profelMakat, profelCuts, formolas);
+
+
             }
         };
 
