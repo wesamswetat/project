@@ -66,16 +66,20 @@
                         // end case serial
                         case 'window':
                             if (value != undefined) {
-                                scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value) ||
+                                if (temporaryDataService.getWindowsFullObjectFromMySql(value)) {
+                                    scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value);
+                                    temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
+                                    calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
+                                } else {
                                     $http({method: 'GET', url: URL + '/window/' + value})
                                         .then(function successCallBack(response) {
                                             scope.windowSelected = response.data;
                                             temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
                                             calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
-                                            console.log(scope.windowSelected[0]);
                                         });
-                                scope.showWindowInputs = true;
+                                }
                             }
+                            scope.showWindowInputs = true;
                             break;
                         // end case window
                         default :

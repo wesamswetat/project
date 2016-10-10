@@ -59,6 +59,8 @@
 <script src="{{asset('app/controllers/registerController.js')}}"></script>
 <script src="{{asset('app/admin/controllers/adminAddWindowController.js')}}"></script>
 <script src="{{asset('app/admin/controllers/mainAdminController.js')}}"></script>
+<script src="{{asset('app/admin/controllers/adminAddProfelController.js')}}"></script>
+<script src="{{asset('app/admin/controllers/adminAddabzaremController.js')}}"></script>
 
 
 <!-- App Directives -->

@@ -58,7 +58,18 @@
             })
             .state('admin.addwindow',{
                 url: '/addwindow',
-                templateUrl: 'app/admin/views/adminaddwindow.html'
+                templateUrl: 'app/admin/views/adminaddwindow.html',
+                controller: 'adminAddWindowController'
+            })
+            .state('admin.addprofel',{
+                url: '/addprofel',
+                templateUrl: 'app/admin/views/adminaddprofel.html',
+                controller: 'adminAddProfelController'
+            })
+            .state('admin.addabzarem',{
+                url: '/addabzarem',
+                templateUrl: 'app/admin/views/adminaddabzarem.html',
+                controller: 'adminAddabzaremController'
             })
         ;
     });

@@ -31,14 +31,13 @@
                 Object.keys(windowObjectFromMysql).length > 0 &&
                 Object.keys(windowObjectFromLocalAddWindowInfoDirective).length > 0) {
 
-                console.log(windowObjectFromMysql);
-                console.log(windowObjectFromLocalAddWindowInfoDirective);
                 windowObjectFromLocalAddWindowInfoDirective.catalogDes = windowObjectFromMysql.des;
                 windowObjectFromLocalAddWindowInfoDirective.company = windowObjectFromMysql.company;
                 windowObjectFromLocalAddWindowInfoDirective.sedra_name = windowObjectFromMysql.sedra_name;
                 windowObjectFromLocalAddWindowInfoDirective.rowds_winds = windowObjectFromMysql.rowds_winds;
                 windowObjectFromLocalAddWindowInfoDirective.sedra_num = windowObjectFromMysql.sedra_num;
                 windowObjectFromLocalAddWindowInfoDirective.fun_code = windowObjectFromMysql.fun_code;
+                windowObjectFromLocalAddWindowInfoDirective.subject = windowObjectFromMysql.subject;
                 windowObjectFromLocalAddWindowInfoDirective.indexInArrayOfWindowsAfterCalculatorOfMedot =
                     temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code) ?
                         temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code).length : 3;
@@ -60,7 +59,7 @@
                     if ( formolas[i] != '+'){
                         formolas[i] = eval(formolas[i]);
                     }
-                    console.log(formolas[i]);
+
                 }
 
                 if (temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code)){
@@ -69,7 +68,6 @@
                     temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code ,formolas, windowObjectFromMysql.des, profelNmae, profelMakat, profelCuts);
                 }
 
-                console.log(formolas);
 
                 /* ######## Cute By Profelem Calculator ###### */
 

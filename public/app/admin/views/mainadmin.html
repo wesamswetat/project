@@ -1,8 +1,10 @@
 
-<div ng-controller="adminAddWindowController">
+<div>
     <ul class="side-menu">
         <!--<li><a><i class="fa fa-home"></i> בית </a></li>-->
-        <li><a ui-sref=".addwindow"><i class="fa fa-plus"></i> הוספת חלון/דלת </a></li>
+        <li><a ui-sref=".addwindow"><i class="fa fa-plus"></i> חלון/דלת </a></li>
+        <li><a ui-sref=".addprofel"><i class="fa fa-plus"></i> פרופיל </a></li>
+        <li><a ui-sref=".addabzarem"><i class="fa fa-plus"></i> אבזר/אטם/מברשת </a></li>
     </ul>
 
     <div class="content">
@@ -14,9 +16,9 @@
 <style>
 
     .side-menu{
-        width: 15%;
+        width: 20%;
         float: right;
-        font-size: 1.3em;
+        font-size: 1.25em;
         margin: 0;
         padding: 0;
     }
@@ -27,7 +29,7 @@
     }
 
     .side-menu > li{
-        margin-right: 35px;
+        margin-right: 10px;
     }
 
     .side-menu >li > a{
@@ -36,7 +38,7 @@
     }
 
     .content{
-        width: 85%;
+        width: 80%;
         float: left;
     }
 

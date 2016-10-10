@@ -1,0 +1,123 @@
+<div class="admin-add-window">
+    <h3> הוספת פרופיל </h3>
+    <form
+            ng-submit="send(addabzarForm.$valid)"
+            name="addabzarForm"
+            role="form"
+            novalidate="novalidate">
+
+        <div class="row">
+
+            <div class="form-group col-md-2">
+                <label for="company" class="control-label">שם חברה</label>
+                <input
+                        required="required"
+                        ng-model="abzar.company"
+                        type="text"
+                        id="company"
+                        class="form-control">
+            </div>
+
+
+            <div class="form-group col-md-2">
+                <label for="sedraName" class="control-label">שם סדרה</label>
+                <input
+                        required="required"
+                        ng-model="abzar.sedraName"
+                        type="text"
+                        id="sedraName"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="sedraNum" class="control-label">מספר סדרה</label>
+                <input
+                        required="required"
+                        ng-model="abzar.sedraNum"
+                        type="text"
+                        id="sedraNum"
+                        class="form-control">
+            </div>
+
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="num" class="control-label">מספר פרופילים בחלון לפי קטלוג של החברה</label>
+                <input
+                        required="required"
+                        ng-model="num"
+                        ng-change="applyChange(num)"
+                        type="number"
+                        min="1"
+                        max="50"
+                        id="num"
+                        class="form-control">
+            </div>
+
+
+            <div class="col-xs-10">
+                <table class="table table-bordered table-striped">
+                    <tr ng-repeat="abzar1 in numOfAbzar track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td class="row">
+
+                            <div class="form-group col-md-2">
+                                <input
+                                        required="required"
+                                        placeholder="מק''ט פרופיל"
+                                        ng-model="abzar.makat[$index]"
+                                        type="text"
+                                        class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <input
+                                        ng-model="abzar.abzarDes[$index]"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="תאור"
+                                        required="required">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-group col-md-3">
+                <button
+                        type="submit"
+                        class="btn btn-primary">שמור
+                    <i class="fa fa-btn fa-save fa-rotate-180"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <pre class="col-md-10" style="direction: ltr">{{abzar | json}}</pre>
+    <pre class="col-md-10" style="direction: ltr">{{windowTemp | json}}</pre>
+</div>
+
+<style>
+
+    .admin-add-window {
+        padding-right: 30px;
+        width: 100%;
+    }
+
+    .admin-add-window .des-input {
+        width: 85%;
+    }
+
+    .admin-add-window .row {
+
+        margin-left: 0;
+
+    }
+
+</style>

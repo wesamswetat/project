@@ -41,7 +41,7 @@ class AddWindowController extends Controller
                         'fun_code' => $request->funcode, 'h_l' => $request->hl, 'profel_cuts' => $request->cuts,
                         'profel_des' => $request->profelDes, 'profel_formela' => $request->formola,
                         'profel_makat' => $request->makat, 'rowds_winds' => $request->rowdsWinds,
-                        'sedra_num' => $request->sedraNum
+                        'sedra_num' => $request->sedraNum, 'subject' => $request->subject
                     ]
                 );
 

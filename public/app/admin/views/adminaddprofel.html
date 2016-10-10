@@ -1,8 +1,8 @@
 <div class="admin-add-window">
-    <h3> הוספת חלון </h3>
+    <h3> הוספת פרופיל </h3>
     <form
-            ng-submit="send(addWindowForm.$valid)"
-            name="addWindowForm"
+            ng-submit="send(addPProfelForm.$valid)"
+            name="addPProfelForm"
             role="form"
             novalidate="novalidate">
 
@@ -12,27 +12,18 @@
                 <label for="company" class="control-label">שם חברה</label>
                 <input
                         required="required"
-                        ng-model="window.company"
+                        ng-model="profel.company"
                         type="text"
                         id="company"
                         class="form-control">
             </div>
 
-            <div class="form-group col-md-2">
-                <label for="funcode" class="control-label">שם פונקציה</label>
-                <input
-                        required="required"
-                        ng-model="window.funcode"
-                        type="text"
-                        id="funcode"
-                        class="form-control">
-            </div>
 
             <div class="form-group col-md-2">
                 <label for="sedraName" class="control-label">שם סדרה</label>
                 <input
                         required="required"
-                        ng-model="window.sedraName"
+                        ng-model="profel.sedraName"
                         type="text"
                         id="sedraName"
                         class="form-control">
@@ -42,31 +33,12 @@
                 <label for="sedraNum" class="control-label">מספר סדרה</label>
                 <input
                         required="required"
-                        ng-model="window.sedraNum"
+                        ng-model="profel.sedraNum"
                         type="text"
                         id="sedraNum"
                         class="form-control">
             </div>
 
-            <div class="form-group col-md-2">
-                <label for="rowdsWinds" class="control-label">מספר נתיבים</label>
-                <input
-                        required="required"
-                        ng-model="window.rowdsWinds"
-                        type="text"
-                        id="rowdsWinds"
-                        class="form-control">
-            </div>
-
-            <div class="form-group col-md-10 ">
-                <label for="des" class="control-label">תיאור חלון</label>
-                <input
-                        required="required"
-                        ng-model="window.des"
-                        type="text"
-                        id="des"
-                        class="form-control">
-            </div>
 
             <div class="col-md-12">
                 <hr>
@@ -85,41 +57,10 @@
                         class="form-control">
             </div>
 
-            <div class="form-group col-md-1 ">
-                <label for="h" class="control-label">גבהים</label>
-                <input
-                        required="required"
-                        ng-model="windowTemp.hl.h"
-                        type="number"
-                        min="1"
-                        id="h"
-                        class="form-control">
-            </div>
-
-            <div class="form-group col-md-1">
-                <label for="l" class="control-label">רוחבים</label>
-                <input
-                        required="required"
-                        ng-model="windowTemp.hl.l"
-                        type="number"
-                        min="1"
-                        id="l"
-                        class="form-control">
-            </div>
-
-            <div class="form-group col-md-3 ">
-                <label for="subject" class="control-label">נושא</label>
-                <input
-                        required="required"
-                        ng-model="window.subject"
-                        type="text"
-                        id="subject"
-                        class="form-control">
-            </div>
 
             <div class="col-xs-10">
                 <table class="table table-bordered table-striped">
-                    <tr ng-repeat="profel in numOfProfels track by $index">
+                    <tr ng-repeat="profel1 in numOfProfels track by $index">
                         <td>{{$index + 1}}</td>
                         <td class="row">
 
@@ -127,14 +68,14 @@
                                 <input
                                         required="required"
                                         placeholder="מק''ט פרופיל"
-                                        ng-model="windowTemp.makat[$index]"
+                                        ng-model="profel.makat[$index]"
                                         type="text"
                                         class="form-control">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <input
-                                        ng-model="windowTemp.profelDes[$index]"
+                                        ng-model="profel.profelDes[$index]"
                                         class="form-control"
                                         type="text"
                                         placeholder="תאור"
@@ -143,19 +84,19 @@
 
                             <div class="form-group col-md-2">
                                 <input
-                                        ng-model="windowTemp.cuts[$index]"
+                                        ng-model="profel.weight[$index]"
                                         class="form-control"
                                         type="text"
-                                        placeholder="כמות לחיתוך"
+                                        placeholder="משקל"
                                         required="required">
                             </div>
 
                             <div class="form-group col-md-3">
                                 <input
-                                        ng-model="windowTemp.formola[$index]"
+                                        ng-model="profel.hekef[$index]"
                                         class="form-control"
                                         type="text"
-                                        placeholder="נוסחת חיתוך"
+                                        placeholder="היקף"
                                         required="required">
                             </div>
                         </td>
@@ -176,7 +117,7 @@
     </form>
 
 
-    <pre class="col-md-10" style="direction: ltr">{{window | json}}</pre>
+    <pre class="col-md-10" style="direction: ltr">{{profel | json}}</pre>
     <pre class="col-md-10" style="direction: ltr">{{windowTemp | json}}</pre>
 </div>
 

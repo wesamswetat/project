@@ -75,8 +75,6 @@
 
         tempData.setArrayOfProfelemToCute = function (profelemObject, numToCutObject, medotObject) {
 
-
-
             for (var key in profelemObject){
                 var
                     tempToAdd,tempKey = {};
