@@ -1,38 +1,39 @@
 <div>
+    <div style="color: #f00; text-align: center; padding-bottom: 10px;">{{error}}</div>
     <form ng-submit="onSubmit()"
           novalidate="novalidate"
           name="addWindow"
           role="form">
 
         <div class="row">
-            <div ng-repeat="time in getTimes(5) track by $index" class="form-group col-md-2">
+            <div ng-repeat="time in getTimes(hl.h) track by $index" class="form-group col-md-2">
                 <div>
-                    <input
+                       <input
                             required="required"
-                            placeholder="גובה"
+                            placeholder="{{h[$index]}}"
                             id="height"
                             type="number"
                             ng-minlength="2"
                             min="0"
                             max="600"
-                            ng-model="windowHeightWidthAndInfo.height"
+                            ng-model="windowHeightWidthAndInfo.height[$index]"
                             class="form-control"
                             name="name">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-2">
+            <div ng-repeat="time in getTimes(hl.l) track by $index" class="form-group col-md-2">
                 <div>
                     <input
                             required="required"
-                            placeholder="רוחב"
+                            placeholder="{{l[$index]}}"
                             id="width"
                             type="number"
                             ng-minlength="2"
                             min="0"
                             max="600"
-                            ng-model="windowHeightWidthAndInfo.width"
+                            ng-model="windowHeightWidthAndInfo.width[$index]"
                             class="form-control"
                             name="name">
                 </div>

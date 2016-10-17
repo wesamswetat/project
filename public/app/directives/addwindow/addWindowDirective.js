@@ -10,7 +10,7 @@
 
     addWindow.directive('addWindowDirective', addWindowDirectiveFunction);
 
-    function addWindowDirectiveFunction($http, localDataService, temporaryDataService, calculatorService) {
+    function addWindowDirectiveFunction($http, localDataService, temporaryDataService, calculatorService, $timeout) {
         return {
             restrict: 'EA',
             scope: {},
@@ -31,6 +31,7 @@
 
                     switch (from) {
                         case 'company':
+                            scope.showWindowInputs = false;
                             scope.companySerials = temporaryDataService.getCompanySedrot(value) ||
                                 $http({method: 'GET', url: URL + '/company/' + value})
                                     .then(function successCallBack(response) {
@@ -41,7 +42,7 @@
                             break;
                         // end case company
                         case 'serial':
-
+                            scope.showWindowInputs = false;
                             var companyAndSedra = scope.windowInfoModel.serial.company_name + scope.windowInfoModel.serial.sedra_num;
 
                             scope.WindowsDesAndFuncode = temporaryDataService.getWindowsDesAndFuncode(companyAndSedra) ||
@@ -65,21 +66,29 @@
                             break;
                         // end case serial
                         case 'window':
+                            scope.showWindowInputs = false;
                             if (value != undefined) {
                                 if (temporaryDataService.getWindowsFullObjectFromMySql(value)) {
                                     scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value);
                                     temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
                                     calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
+                                    $timeout(function () {
+                                        scope.showWindowInputs = true;
+                                    });
                                 } else {
                                     $http({method: 'GET', url: URL + '/window/' + value})
                                         .then(function successCallBack(response) {
                                             scope.windowSelected = response.data;
                                             temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
                                             calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
+                                            $timeout(function () {
+                                                scope.showWindowInputs = true;
+                                            });
                                         });
                                 }
+
+
                             }
-                            scope.showWindowInputs = true;
                             break;
                         // end case window
                         default :

@@ -1,0 +1,37 @@
+<section class="container">
+    <hr>
+    <div>
+        <table class="table table-bordered table-striped">
+
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>תמונת פרופיל</th>
+                <th>מספר/מק"ט</th>
+                <th>תיאור</th>
+                <th>כמות מוט</th>
+                <th>פחות ממוט</th>
+                <th>משקל כולל</th>
+                <th>מחיר</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, value) in order track by $index">
+                <th scope="row">{{$index + 1}}</th>
+                <td>pis</td>
+                <td>{{key}}</td>
+                <td>{{value.profelDes}}</td>
+                <td>{{value.motot}}</td>
+                <td>{{value.lessMott}}</td>
+                <td>{{value.meshkal}}</td>
+                <td>price</td>
+            </tr>
+            </tbody>
+
+
+        </table>
+
+        </table>
+    </div>
+    <pre style="direction: ltr"> {{order | json}}</pre>
+</section>

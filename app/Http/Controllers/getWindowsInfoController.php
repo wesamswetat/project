@@ -28,4 +28,12 @@ class getWindowsInfoController extends Controller
         $result = DB::table('windows')->where('fun_code', $funCode)->get();
         return  $result;
     }
+
+    public function getProfels(Request $request){
+        $result = [];
+        for ($i = 0 ; $i < count($request->data) ; $i++){
+            array_push($result , DB::table('profel')->where('makat', $request->data[$i])->get());
+        }
+       return ($result);
+    }
 }

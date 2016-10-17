@@ -21,6 +21,10 @@
             windowObjectFromMysql = window;
         };
 
+        calculator.getWindowObjectFromMysql = function () {
+            return windowObjectFromMysql ;
+        };
+
         calculator.setWindowObjectFromLocalAddWindowInfoDirective = function (windowHeightWidthAndInfo) {
             windowObjectFromLocalAddWindowInfoDirective = windowHeightWidthAndInfo;
         };
@@ -44,14 +48,38 @@
                 temporaryDataService.setArrayOfWindowsAddedInAddWindowPage(windowObjectFromLocalAddWindowInfoDirective);
 
                 var
-                    i,
+                    i,re,
                     profelNmae = JSON.parse(windowObjectFromMysql.profel_des),
                     profelMakat = JSON.parse(windowObjectFromMysql.profel_makat),
                     profelCuts = JSON.parse(windowObjectFromMysql.profel_cuts),
+                    hl = JSON.parse(windowObjectFromMysql.h_l),
                     formolas = windowObjectFromMysql.profel_formela;
 
-                formolas = formolas.replace(/l/g , windowObjectFromLocalAddWindowInfoDirective.width);
-                formolas = formolas.replace(/h/g , windowObjectFromLocalAddWindowInfoDirective.height);
+
+                for (i = hl.h - 1 ; i >= 0 ; i = i - 1){
+                    if (i === 0){
+                        re = new RegExp("h","g");
+                    } else {
+                        re = new RegExp("h"+i,"g");
+                    }
+                    console.log(re);
+                    formolas = formolas.replace(re , windowObjectFromLocalAddWindowInfoDirective.height[i]);
+
+                }
+
+                for (i = hl.l - 1 ; i >= 0  ; i = i - 1){
+                    if (i === 0){
+                        re = new RegExp("l","g");
+                    } else {
+                        re = new RegExp("l"+i,"g");
+                    }
+                    formolas = formolas.replace(re , windowObjectFromLocalAddWindowInfoDirective.width[i]);
+                }
+
+                console.log(formolas);
+
+                // formolas = formolas.replace(/l/g , windowObjectFromLocalAddWindowInfoDirective.width);
+                // formolas = formolas.replace(/h/g , windowObjectFromLocalAddWindowInfoDirective.height);
 
                 formolas = JSON.parse(formolas);
 
@@ -72,7 +100,7 @@
                 /* ######## Cute By Profelem Calculator ###### */
 
                 temporaryDataService.setArrayOfProfelemToCute(profelMakat, profelCuts, formolas);
-
+                temporaryDataService.setArrayOfAllProfelsOfAllWindowsFullDataFromMysql(profelMakat);
 
             }
         };

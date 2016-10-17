@@ -37,9 +37,11 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::get('/admin', 'AddWindowController@index');
 Route::post('/admin/addwindow', 'AddWindowController@addWindowWithProfels');
+Route::post('/admin/addabzar', 'AddWindowController@addabzar');
+Route::post('/admin/addprofel', 'AddWindowController@addprofel');
 
 
 Route::get('/company/{name}', 'getWindowsInfoController@getSedrotOfCompany');
 Route::get('/company/windows/{company}/{sedra}', 'getWindowsInfoController@getAllWindowsOfSedra');
 Route::get('/window/{funcode}', 'getWindowsInfoController@getWindowFullObject');
-
+Route::post('/profels', 'getWindowsInfoController@getProfels');

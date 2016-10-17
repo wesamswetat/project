@@ -29,9 +29,14 @@
             if (valid){
 
                 for ( i = 0 ; i < Object.keys($scope.profel.makat).length ; i = i + 1){
-                    temp[i] = 'http://alom.co.il/images/' + $scope.profel.sedraNum + '/' + $scope.profel.makat[i] +'.jpg';
+                    temp[i] = 'http://alom.co.il/images/profels/' + $scope.profel.sedraNum + '/' + $scope.profel.makat[i] +'.jpg';
                 }
                 $scope.profel.pic = temp;
+
+                $http({method: 'POST', url: URL + '/admin/addprofel', data:$scope.profel})
+                    .then(function successCallBack(response) {
+                        console.log(response);
+                    })
             }
         }
     }

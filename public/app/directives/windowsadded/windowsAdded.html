@@ -16,8 +16,8 @@
     <tbody>
     <tr ng-repeat="window in windows track by $index">
         <th scope="row">{{$index + 1}}</th>
-        <td>{{window.width}}</td>
-        <td>{{window.height}}</td>
+        <td>{{window.width[0]}}</td>
+        <td>{{window.height[0]}}</td>
         <td>{{window.company}}</td>
         <td>{{window.sedra_name}} {{window.sedra_num}}</td>
         <td>{{window.catalogDes}}<br>{{window.windowDes}}<br>{{window.glassDes}}</td>

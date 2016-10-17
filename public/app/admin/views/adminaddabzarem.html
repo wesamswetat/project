@@ -1,5 +1,5 @@
 <div class="admin-add-window">
-    <h3> הוספת פרופיל </h3>
+    <h3> הוספת אבזרים אטמים ומברשות </h3>
     <form
             ng-submit="send(addabzarForm.$valid)"
             name="addabzarForm"
@@ -55,6 +55,21 @@
                         max="50"
                         id="num"
                         class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="is_abzarem" class="control-label">אבזר או אטמים או מברשות</label>
+                <select
+                        required="required"
+                        ng-model="fromOptions"
+                        ng-change="options(fromOptions)"
+                        id="is_abzarem"
+                        class="form-control">
+
+                    <option>אבזר</option>
+                    <option>אטמים</option>
+                    <option>מברשות</option>
+                </select>
             </div>
 
 

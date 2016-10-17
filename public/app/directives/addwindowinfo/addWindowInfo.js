@@ -9,21 +9,73 @@
 
     windowInfo.directive('addWindowInfo', addWindowInfoFunction);
 
-    function addWindowInfoFunction(calculatorService, temporaryDataService) {
+    function addWindowInfoFunction(calculatorService, temporaryDataService, $timeout) {
         return{
             restrict: 'EA',
-            scope: {},
-            templateUrl: 'app/directives/addwindowinfo/addWindowInfo.html',
+            scope: {
+                window: '='
+            },
+            replace: true,
+            templateUrl: 'app/directives/addwindowinfo/addWindowInfo1.html',
             link: function (scope, elme, attr) {
+                var i, temp = 0, isValed = true;
+                scope.error = '';
                 scope.windowHeightWidthAndInfo = {};
+                scope.windowFromMysql = calculatorService.getWindowObjectFromMysql();
+
+                scope.getTimes=function(n){
+                    return new Array(n);
+                };
+
+                $timeout(function () {
+                    console.log(scope.window[0]);
+                    scope.hl = JSON.parse(scope.window[0].h_l) ;
+                    scope.l = JSON.parse(scope.window[0].l_des) ;
+                    scope.h = JSON.parse(scope.window[0].h_des) ;
+                    console.log(scope.hl);
+                    console.log(scope.h);
+                    console.log(scope.l);
+
+                });
 
                 scope.onSubmit = function () {
                     scope.windowHeightWidthAndInfo.price =
-                        scope.windowHeightWidthAndInfo.cost * scope.windowHeightWidthAndInfo.height / 100 *
-                        scope.windowHeightWidthAndInfo.width / 100 ;
+                        scope.windowHeightWidthAndInfo.cost * scope.windowHeightWidthAndInfo.height[0] / 100 *
+                        scope.windowHeightWidthAndInfo.width[0] / 100 ;
 
-                    calculatorService.setWindowObjectFromLocalAddWindowInfoDirective(scope.windowHeightWidthAndInfo);
-                    calculatorService.calculate();
+                    console.log(scope.windowHeightWidthAndInfo.height[0]);
+                    if (scope.hl.h > 1){
+                        temp = 0;
+                        for (i = 1 ; i < scope.hl.h ; i = i + 1){
+                            temp = temp + scope.windowHeightWidthAndInfo.height[i];
+                            console.log(i);
+                        }
+                       if (temp > scope.windowHeightWidthAndInfo.height[0]){
+                           scope.error = 'פתח גובה קטן מסך כל שאר הפתחים';
+                           isValed = false;
+                       } else {
+                           scope.error = '';
+                           isValed = true;
+                       }
+                    }
+
+                    if (scope.hl.l > 1){
+                        for (i = 1 ; i < scope.hl.l ; i = i + 1){
+                            temp = temp + scope.windowHeightWidthAndInfo.width[i]
+                        }
+                        if (temp > scope.windowHeightWidthAndInfo.width[0]){
+                            scope.error = 'פתח רוחב קטן מסך כל שאר הפתחים';
+                            isValed = false;
+                        } else {
+                            scope.error = '';
+                            isValed = true;
+                        }
+                    }
+
+                    if (isValed){
+                        calculatorService.setWindowObjectFromLocalAddWindowInfoDirective(scope.windowHeightWidthAndInfo);
+                        calculatorService.calculate();
+                    }
                 }
             }
 

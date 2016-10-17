@@ -16,12 +16,10 @@
 
         $scope.window = {};
         $scope.windowTemp = {};
-        $scope.numOfProfels = [];
-        $scope.num = 0;
 
         $scope.applyChange = function (num) {
             // for ng-repeat for number of profels in window
-            $scope.numOfProfels = new Array(num);
+            return new Array(num);
         };
 
         $scope.send = function (valid) {
@@ -31,9 +29,18 @@
             if (valid) {
 
                 $scope.window.makat = JSON.stringify($scope.windowTemp.makat);
+                $scope.window.abzarMakat = JSON.stringify($scope.windowTemp.abzarMakat);
+                $scope.window.atamMakat = JSON.stringify($scope.windowTemp.atamMakat);
                 $scope.window.cuts = JSON.stringify($scope.windowTemp.cuts);
+                $scope.window.abzarAmount = JSON.stringify($scope.windowTemp.abzarAmount);
+                $scope.window.glassAmunt = JSON.stringify($scope.windowTemp.glassAmunt);
+                $scope.window.abzarNumInSertot = JSON.stringify($scope.windowTemp.abzarNumInSertot);
+                $scope.window.atamNumInSertot = JSON.stringify($scope.windowTemp.atamNumInSertot);
                 $scope.window.formola = JSON.stringify($scope.windowTemp.formola);
+                $scope.window.glassFormela = JSON.stringify($scope.windowTemp.glassFormela);
                 $scope.window.profelDes = JSON.stringify($scope.windowTemp.profelDes);
+                $scope.window.hDes = JSON.stringify($scope.windowTemp.hDes);
+                $scope.window.lDes = JSON.stringify($scope.windowTemp.lDes);
                 $scope.window.hl = JSON.stringify($scope.windowTemp.hl);
 
                 $http({method: 'POST', url: URL + '/admin/addwindow', data: $scope.window})

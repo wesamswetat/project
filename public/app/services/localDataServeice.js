@@ -17,7 +17,7 @@
             user = {}; // user name AND mail
 
         // MAIN BUTTONS the same array should de in app.js
-        data.buttonsGroup = ["הוספת חלון", "חיתוך לפי חלון", "חיתוך לפי פרופיל", "הזמנת חומר", "הזמנת זכוכית", "הצעות מחיר עם סרטוטים"];
+        data.buttonsGroup = ["הוספת חלון", "חיתוך לפי חלון", "חיתוך לפי פרופיל", "הזמנת פרופילים", "הזמנת זכוכית", "הצעות מחיר עם סרטוטים"];
 
         /* ############# if user already exit ############# */
         $http({method: 'GET', url: url + '/checkuser'})

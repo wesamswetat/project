@@ -16,6 +16,7 @@
             link: function (scope, elme, attr) {
 
                 scope.windows = temporaryDataService.getArrayOfWindowsAddedInAddWindowPage();
+                console.log(scope.windows);
 
             }
         }

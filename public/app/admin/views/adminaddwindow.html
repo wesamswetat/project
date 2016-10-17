@@ -4,6 +4,7 @@
             ng-submit="send(addWindowForm.$valid)"
             name="addWindowForm"
             role="form"
+            autocomplete="on"
             novalidate="novalidate">
 
         <div class="row">
@@ -13,6 +14,7 @@
                 <input
                         required="required"
                         ng-model="window.company"
+                        autocomplete="on"
                         type="text"
                         id="company"
                         class="form-control">
@@ -34,6 +36,7 @@
                         required="required"
                         ng-model="window.sedraName"
                         type="text"
+                        autocomplete="on"
                         id="sedraName"
                         class="form-control">
             </div>
@@ -45,6 +48,7 @@
                         ng-model="window.sedraNum"
                         type="text"
                         id="sedraNum"
+                        autocomplete="on"
                         class="form-control">
             </div>
 
@@ -64,6 +68,7 @@
                         required="required"
                         ng-model="window.des"
                         type="text"
+                        autocomplete="on"
                         id="des"
                         class="form-control">
             </div>
@@ -77,7 +82,6 @@
                 <input
                         required="required"
                         ng-model="num"
-                        ng-change="applyChange(num)"
                         type="number"
                         min="1"
                         max="50"
@@ -85,27 +89,6 @@
                         class="form-control">
             </div>
 
-            <div class="form-group col-md-1 ">
-                <label for="h" class="control-label">גבהים</label>
-                <input
-                        required="required"
-                        ng-model="windowTemp.hl.h"
-                        type="number"
-                        min="1"
-                        id="h"
-                        class="form-control">
-            </div>
-
-            <div class="form-group col-md-1">
-                <label for="l" class="control-label">רוחבים</label>
-                <input
-                        required="required"
-                        ng-model="windowTemp.hl.l"
-                        type="number"
-                        min="1"
-                        id="l"
-                        class="form-control">
-            </div>
 
             <div class="form-group col-md-3 ">
                 <label for="subject" class="control-label">נושא</label>
@@ -114,12 +97,13 @@
                         ng-model="window.subject"
                         type="text"
                         id="subject"
+                        autocomplete="on"
                         class="form-control">
             </div>
 
             <div class="col-xs-10">
                 <table class="table table-bordered table-striped">
-                    <tr ng-repeat="profel in numOfProfels track by $index">
+                    <tr ng-repeat="profel in applyChange(num) track by $index">
                         <td>{{$index + 1}}</td>
                         <td class="row">
 
@@ -138,6 +122,7 @@
                                         class="form-control"
                                         type="text"
                                         placeholder="תאור"
+                                        autocomplete="on"
                                         required="required">
                             </div>
 
@@ -163,6 +148,221 @@
                 </table>
             </div>
 
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="abzarnum" class="control-label">מספר אבזרים בחלון לפי קטלוג של החברה</label>
+                <input
+                        required="required"
+                        ng-model="abzarnum"
+                        type="number"
+                        min="1"
+                        max="50"
+                        id="abzarnum"
+                        class="form-control">
+            </div>
+
+            <div class="col-xs-10">
+                <table class="table table-bordered table-striped">
+                    <tr ng-repeat="abzar in applyChange(abzarnum) track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td class="row">
+
+                            <div class="form-group col-md-2">
+                                <input
+                                        required="required"
+                                        placeholder="מק''ט אבזר"
+                                        ng-model="windowTemp.abzarMakat[$index]"
+                                        type="text"
+                                        class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <input
+                                        ng-model="windowTemp.abzarAmount[$index]"
+                                        class="form-control"
+                                        type="number"
+                                        placeholder="כמות "
+                                        required="required">
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <input
+                                        ng-model="windowTemp.abzarNumInSertot[$index]"
+                                        class="form-control"
+                                        type="number"
+                                        placeholder="מס' בשרטוט"
+                                        required="required">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label for="atamem" class="control-label">מספר אטמים ומברשות בחלון לפי קטלוג של החברה</label>
+                    <input
+                            required="required"
+                            ng-model="atamem"
+                            type="number"
+                            min="1"
+                            max="50"
+                            id="atamem"
+                            class="form-control">
+                </div>
+
+                <div class="col-xs-10">
+                    <table class="table table-bordered table-striped">
+                        <tr ng-repeat="atam in applyChange(atamem) track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td class="row">
+
+                                <div class="form-group col-md-4">
+                                    <input
+                                            required="required"
+                                            placeholder="מק''ט אטם/מברשת"
+                                            ng-model="windowTemp.atamMakat[$index]"
+                                            type="text"
+                                            class="form-control">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <input
+                                            ng-model="windowTemp.atamNumInSertot[$index]"
+                                            class="form-control"
+                                            type="number"
+                                            placeholder="מס' בשרטוט"
+                                            required="required">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="zegog" class="control-label">זיגוג בחלון לפי קטלוג של החברה</label>
+                <input
+                        required="required"
+                        ng-model="zegog"
+                        type="number"
+                        min="1"
+                        max="50"
+                        id="zegog"
+                        class="form-control">
+            </div>
+
+            <div class="col-xs-10">
+                <table class="table table-bordered table-striped">
+                    <tr ng-repeat="atam in applyChange(zegog) track by $index">
+                        <td>{{$index + 1}}</td>
+                        <td class="row">
+
+                            <div class="form-group col-md-4">
+                                <input
+                                        required="required"
+                                        placeholder="נוסחת חיתוך"
+                                        ng-model="windowTemp.glassFormela[$index]"
+                                        type="text"
+                                        class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <input
+                                        required="required"
+                                        placeholder="כמות"
+                                        ng-model="windowTemp.glassAmunt[$index]"
+                                        type="number"
+                                        class="form-control">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
+            <div class="form-group col-md-2  ">
+                <label for="h" class="control-label">גבהים</label>
+                <input
+                        required="required"
+                        ng-model="windowTemp.hl.h"
+                        type="number"
+                        min="1"
+                        id="h"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="l" class="control-label">רוחבים</label>
+                <input
+                        required="required"
+                        ng-model="windowTemp.hl.l"
+                        type="number"
+                        min="1"
+                        id="l"
+                        class="form-control">
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-5 ">
+                        <table class="table table-bordered table-striped">
+                            <tr ng-repeat="h in applyChange(windowTemp.hl.h) track by $index">
+                                <td>{{$index + 1}}</td>
+                                <td class="row">
+
+                                    <div class="form-group col-md-4">
+                                        <input
+                                                required="required"
+                                                placeholder="תיאור גובה"
+                                                ng-model="windowTemp.hDes[$index]"
+                                                type="text"
+                                                class="form-control">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <div class="col-xs-5">
+                        <table class="table table-bordered table-striped">
+                            <tr ng-repeat="l in applyChange(windowTemp.hl.l) track by $index">
+                                <td>{{$index + 1}}</td>
+                                <td class="row">
+
+                                    <div class="form-group col-md-4">
+                                        <input
+                                                required="required"
+                                                placeholder="תיאור רוחב"
+                                                ng-model="windowTemp.lDes[$index]"
+                                                type="text"
+                                                class="form-control">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <hr>
+            </div>
+
             <div class="form-group col-md-3">
                 <button
                         type="submit"
@@ -172,6 +372,7 @@
             </div>
 
         </div>
+
 
     </form>
 

@@ -71,5 +71,6 @@
 <script src="{{asset('app/directives/windowsadded/windowsAdded.js')}}"></script>
 <script src="{{asset('app/directives/cutbywindows/cutbywindows.js')}}"></script>
 <script src="{{asset('app/directives/cutbyprofel/cuteByProfel.js')}}"></script>
+<script src="{{asset('app/directives/profelsorder/profelsOrder.js')}}"></script>
 </body>
 </html>
