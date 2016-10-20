@@ -23,7 +23,13 @@
         <td>{{window.catalogDes}}<br>{{window.windowDes}}<br>{{window.glassDes}}</td>
         <td>{{window.subject}}</td>
         <td>{{window.price}}</td>
-        <td></td>
+        <td>
+            <button
+                    ng-click="remove($index)"
+                    class="btn btn-danger"> מחק
+                <i class="fa fa-btn fa-remove"></i>
+            </button>
+        </td>
     </tr>
     </tbody>
 

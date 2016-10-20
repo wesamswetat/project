@@ -22,7 +22,8 @@
             arrayOfWindowsAfterCalculatorOfMedot = {},
             arrayOfProfelemToCute = {},
             arrayOfAllProfelsOfAllWindowsFullDataFromMysql = {},
-            arrayOfOrder = {};
+            arrayOfOrder = {},
+            arrayOfGlassOrder = {};
 
         tempData.setCompanySedrot = function (company, sedrot) {
             companySedrot[company] = sedrot;
@@ -207,6 +208,61 @@
 
         tempData.getArrayOfOrder = function () {
             return arrayOfOrder;
+        };
+
+        tempData.setArrayOfGlassOrder = function (glassFormolas, glassAmount, windowInfo) {
+            var
+                key, temp,
+                temp1 =  windowInfo.indexInArrayOfWindowsAfterCalculatorOfMedot - 4;
+
+            for (key in glassFormolas) {
+                if (glassFormolas.hasOwnProperty(key)) {
+                    temp = glassFormolas[key].split('x');
+                    temp = eval(temp[0]).toFixed(2) + ' X ' + eval(temp[1]).toFixed(2);
+                    if (arrayOfGlassOrder.hasOwnProperty(windowInfo.fun_code)) {
+                        if ( arrayOfGlassOrder[windowInfo.fun_code].hasOwnProperty(temp1)){
+                            arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
+                        } else {
+                            arrayOfGlassOrder[windowInfo.fun_code][temp1] = {};
+                            arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
+                            arrayOfGlassOrder[windowInfo.fun_code].numOfWindows += 1;
+                        }
+                    } else {
+                        arrayOfGlassOrder[windowInfo.fun_code] = {};
+                        arrayOfGlassOrder[windowInfo.fun_code][temp1] = {};
+                        arrayOfGlassOrder[windowInfo.fun_code].glassAmount = {};
+                        arrayOfGlassOrder[windowInfo.fun_code].glassAmount = glassAmount;
+                        arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
+                        arrayOfGlassOrder[windowInfo.fun_code].catalogDes = windowInfo.catalogDes;
+                        arrayOfGlassOrder[windowInfo.fun_code].subject = windowInfo.subject;
+                        arrayOfGlassOrder[windowInfo.fun_code].company = windowInfo.company;
+                        arrayOfGlassOrder[windowInfo.fun_code].glassDes = windowInfo.glassDes;
+                        arrayOfGlassOrder[windowInfo.fun_code].windowDes = windowInfo.windowDes;
+                        arrayOfGlassOrder[windowInfo.fun_code].sedra_num = windowInfo.sedra_num;
+                        arrayOfGlassOrder[windowInfo.fun_code].sedra_name = windowInfo.sedra_name;
+                        arrayOfGlassOrder[windowInfo.fun_code].numOfWindows = 1;
+                    }
+                }
+            }
+            console.log(arrayOfGlassOrder);
+            console.log(windowInfo);
+            console.log(arrayOfWindowsAddedInAddWindowPage);
+        };
+
+        tempData.removeFromArrayOfGlassOrder = function (windowMedotToRemove) {
+            var
+                windowId = windowMedotToRemove.indexInArrayOfWindowsAfterCalculatorOfMedot - 4,
+                funCode = windowMedotToRemove.fun_code;
+
+            delete arrayOfGlassOrder[funCode][windowId] ;
+            arrayOfGlassOrder[funCode].numOfWindows -= 1;
+            if (arrayOfGlassOrder[funCode].numOfWindows === 0){
+                delete arrayOfGlassOrder[funCode];
+            }
+        };
+
+        tempData.getArrayOfGlassOrder = function () {
+            return arrayOfGlassOrder;
         };
 
 

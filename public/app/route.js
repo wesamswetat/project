@@ -39,6 +39,10 @@
                 url: '/' + navigationButtons[3],
                 template: '<profels-order></profels-order>'
             })
+            .state('home.' + navigationButtons[4], {
+                url: '/' + navigationButtons[4],
+                template: '<glass-order></glass-order>'
+            })
             /////////////
             /// Auth ///
             ////////////

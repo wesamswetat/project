@@ -22,7 +22,7 @@
         };
 
         calculator.getWindowObjectFromMysql = function () {
-            return windowObjectFromMysql ;
+            return windowObjectFromMysql;
         };
 
         calculator.setWindowObjectFromLocalAddWindowInfoDirective = function (windowHeightWidthAndInfo) {
@@ -44,56 +44,59 @@
                 windowObjectFromLocalAddWindowInfoDirective.subject = windowObjectFromMysql.subject;
                 windowObjectFromLocalAddWindowInfoDirective.indexInArrayOfWindowsAfterCalculatorOfMedot =
                     temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code) ?
-                        temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code).length : 3;
+                        temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code).length : 4;
                 temporaryDataService.setArrayOfWindowsAddedInAddWindowPage(windowObjectFromLocalAddWindowInfoDirective);
 
                 var
-                    i,re,
+                    i, re,
                     profelNmae = JSON.parse(windowObjectFromMysql.profel_des),
                     profelMakat = JSON.parse(windowObjectFromMysql.profel_makat),
                     profelCuts = JSON.parse(windowObjectFromMysql.profel_cuts),
                     hl = JSON.parse(windowObjectFromMysql.h_l),
-                    formolas = windowObjectFromMysql.profel_formela;
+                    formolas = windowObjectFromMysql.profel_formela,
+                    glassFormolas = windowObjectFromMysql.zegog,
+                    glass_amount = JSON.parse(windowObjectFromMysql.glass_amount);
 
 
-                for (i = hl.h - 1 ; i >= 0 ; i = i - 1){
-                    if (i === 0){
-                        re = new RegExp("h","g");
+                for (i = hl.h - 1; i >= 0; i = i - 1) {
+                    if (i === 0) {
+                        re = new RegExp("h", "g");
                     } else {
-                        re = new RegExp("h"+i,"g");
+                        re = new RegExp("h" + i, "g");
                     }
-                    console.log(re);
-                    formolas = formolas.replace(re , windowObjectFromLocalAddWindowInfoDirective.height[i]);
+                    formolas = formolas.replace(re, windowObjectFromLocalAddWindowInfoDirective.height[i]);
+                    glassFormolas = glassFormolas.replace(re, windowObjectFromLocalAddWindowInfoDirective.height[i]);
 
                 }
 
-                for (i = hl.l - 1 ; i >= 0  ; i = i - 1){
-                    if (i === 0){
-                        re = new RegExp("l","g");
+                for (i = hl.l - 1; i >= 0; i = i - 1) {
+                    if (i === 0) {
+                        re = new RegExp("l", "g");
                     } else {
-                        re = new RegExp("l"+i,"g");
+                        re = new RegExp("l" + i, "g");
                     }
-                    formolas = formolas.replace(re , windowObjectFromLocalAddWindowInfoDirective.width[i]);
+                    formolas = formolas.replace(re, windowObjectFromLocalAddWindowInfoDirective.width[i]);
+                    glassFormolas = glassFormolas.replace(re, windowObjectFromLocalAddWindowInfoDirective.width[i]);
                 }
 
-                console.log(formolas);
 
                 // formolas = formolas.replace(/l/g , windowObjectFromLocalAddWindowInfoDirective.width);
                 // formolas = formolas.replace(/h/g , windowObjectFromLocalAddWindowInfoDirective.height);
 
                 formolas = JSON.parse(formolas);
+                glassFormolas = JSON.parse(glassFormolas);
 
-                for (i = 0 ; i < Object.keys(formolas).length ; i = i + 1){
-                    if ( formolas[i] != '+'){
+                for (i = 0; i < Object.keys(formolas).length; i = i + 1) {
+                    if (formolas[i] != '+') {
                         formolas[i] = eval(formolas[i]);
                     }
 
                 }
 
-                if (temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code)){
+                if (temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code)) {
                     temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code, formolas);
                 } else {
-                    temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code ,formolas, windowObjectFromMysql.des, profelNmae, profelMakat, profelCuts);
+                    temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code, formolas, windowObjectFromMysql.des, profelNmae, profelMakat, profelCuts);
                 }
 
 
@@ -101,6 +104,7 @@
 
                 temporaryDataService.setArrayOfProfelemToCute(profelMakat, profelCuts, formolas);
                 temporaryDataService.setArrayOfAllProfelsOfAllWindowsFullDataFromMysql(profelMakat);
+                temporaryDataService.setArrayOfGlassOrder(glassFormolas, glass_amount, windowObjectFromLocalAddWindowInfoDirective);
 
             }
         };

@@ -9,14 +9,21 @@
     
     windowsAdded.directive('windowsAdded', windowsAddedFunction);
     
-    function windowsAddedFunction(temporaryDataService) {
+    function windowsAddedFunction(temporaryDataService, calculatorService) {
         return{
             restrict: 'EA',
             templateUrl: 'app/directives/windowsadded/windowsAdded.html',
             link: function (scope, elme, attr) {
 
                 scope.windows = temporaryDataService.getArrayOfWindowsAddedInAddWindowPage();
-                console.log(scope.windows);
+                scope.remove = function (index) {
+                    console.log(temporaryDataService.getArrayOfWindowsAddedInAddWindowPage());
+                    console.log(temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot());
+                    console.log(temporaryDataService.getArrayOfProfelemToCute());
+                    console.log(temporaryDataService.getArrayOfOrder());
+                    console.log(temporaryDataService.getArrayOfGlassOrder());
+                    temporaryDataService.removeFromArrayOfGlassOrder(scope.windows[index]);
+                }
 
             }
         }
