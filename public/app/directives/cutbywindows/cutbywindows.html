@@ -1,23 +1,23 @@
 <section class="container ">
 
-    <div style="overflow: scroll"  ng-repeat="( key, funcode ) in windowsTable" class="panel panel-info">
-        <div class="panel-heading "> {{funcode[0]}}</div>
+    <div style="overflow: scroll"  ng-repeat="(funcode, windowId) in windowsTable" class="panel panel-info">
+        <div class="panel-heading "> {{windowInfo[funcode].des}}</div>
         <div class="panel-body">
 
-            <table id="{{key}}" class="table table-bordered table-striped">
+            <table id="{{funcode}}" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th ng-repeat="item in funcode[1]">{{item}}</th>
+                    <th ng-repeat="item in windowInfo[funcode].profel_des">{{item}}</th>
                 </tr>
                 <tr>
-                    <th ng-repeat="item in funcode[2]">{{item}}</th>
+                    <th ng-repeat="item in windowInfo[funcode].profel_makat">{{item}}</th>
                 </tr>
                 </thead>
                 <tbody>
 
 
-                <tr ng-repeat="array in funcode track by $index" ng-if="$index > 3">
-                    <td  ng-repeat="item in array track by $index" >{{funcode[3][$index]}}#<br>{{item}}</td>
+                <tr ng-repeat="window in windowId">
+                    <td ng-repeat="(key, meda) in window">{{windowInfo[funcode].profel_cuts[key]}} # <br>{{meda}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -25,6 +25,8 @@
         </div>
     </div>
 
+    <pre style="direction: ltr">{{windowsTable | json}}</pre>
+    <pre style="direction: ltr">{{windowInfo | json}}</pre>
 
 </section>
 

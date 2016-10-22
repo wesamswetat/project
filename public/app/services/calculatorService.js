@@ -42,20 +42,19 @@
                 windowObjectFromLocalAddWindowInfoDirective.sedra_num = windowObjectFromMysql.sedra_num;
                 windowObjectFromLocalAddWindowInfoDirective.fun_code = windowObjectFromMysql.fun_code;
                 windowObjectFromLocalAddWindowInfoDirective.subject = windowObjectFromMysql.subject;
-                windowObjectFromLocalAddWindowInfoDirective.indexInArrayOfWindowsAfterCalculatorOfMedot =
-                    temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code) ?
-                        temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code).length : 4;
+                windowObjectFromLocalAddWindowInfoDirective.id = (new Date()).valueOf();
+
                 temporaryDataService.setArrayOfWindowsAddedInAddWindowPage(windowObjectFromLocalAddWindowInfoDirective);
 
                 var
                     i, re,
-                    profelNmae = JSON.parse(windowObjectFromMysql.profel_des),
-                    profelMakat = JSON.parse(windowObjectFromMysql.profel_makat),
-                    profelCuts = JSON.parse(windowObjectFromMysql.profel_cuts),
-                    hl = JSON.parse(windowObjectFromMysql.h_l),
-                    formolas = windowObjectFromMysql.profel_formela,
-                    glassFormolas = windowObjectFromMysql.zegog,
-                    glass_amount = JSON.parse(windowObjectFromMysql.glass_amount);
+                    profelNmae = (windowObjectFromMysql.profel_des),
+                    profelMakat = (windowObjectFromMysql.profel_makat),
+                    profelCuts = (windowObjectFromMysql.profel_cuts),
+                    hl = (windowObjectFromMysql.h_l),
+                    formolas = JSON.stringify(windowObjectFromMysql.profel_formela),
+                    glassFormolas = JSON.stringify(windowObjectFromMysql.zegog),
+                    glass_amount = (windowObjectFromMysql.glass_amount);
 
 
                 for (i = hl.h - 1; i >= 0; i = i - 1) {
@@ -93,11 +92,8 @@
 
                 }
 
-                if (temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code)) {
-                    temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code, formolas);
-                } else {
-                    temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code, formolas, windowObjectFromMysql.des, profelNmae, profelMakat, profelCuts);
-                }
+
+                temporaryDataService.setArrayOfWindowsAfterCalculatorOfMedot(windowObjectFromMysql.fun_code, windowObjectFromLocalAddWindowInfoDirective.id, formolas);
 
 
                 /* ######## Cute By Profelem Calculator ###### */

@@ -70,7 +70,6 @@
                             if (value != undefined) {
                                 if (temporaryDataService.getWindowsFullObjectFromMySql(value)) {
                                     scope.windowSelected = temporaryDataService.getWindowsFullObjectFromMySql(value);
-                                    temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
                                     calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
                                     $timeout(function () {
                                         scope.showWindowInputs = true;
@@ -79,7 +78,7 @@
                                     $http({method: 'GET', url: URL + '/window/' + value})
                                         .then(function successCallBack(response) {
                                             scope.windowSelected = response.data;
-                                            temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected);
+                                            temporaryDataService.setWindowsFullObjectFromMySql(value, scope.windowSelected[0]);
                                             calculatorService.setWindowObjectFromMysql(scope.windowSelected[0]);
                                             $timeout(function () {
                                                 scope.showWindowInputs = true;

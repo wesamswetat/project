@@ -29,9 +29,9 @@
 
                 $timeout(function () {
                     console.log(scope.window[0]);
-                    scope.hl = JSON.parse(scope.window[0].h_l) ;
-                    scope.l = JSON.parse(scope.window[0].l_des) ;
-                    scope.h = JSON.parse(scope.window[0].h_des) ;
+                    scope.hl = (scope.window[0].h_l) ;
+                    scope.l = (scope.window[0].l_des) ;
+                    scope.h = (scope.window[0].h_des) ;
                     console.log(scope.hl);
                     console.log(scope.h);
                     console.log(scope.l);

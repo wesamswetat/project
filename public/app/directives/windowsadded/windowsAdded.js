@@ -17,12 +17,11 @@
 
                 scope.windows = temporaryDataService.getArrayOfWindowsAddedInAddWindowPage();
                 scope.remove = function (index) {
-                    console.log(temporaryDataService.getArrayOfWindowsAddedInAddWindowPage());
-                    console.log(temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot());
-                    console.log(temporaryDataService.getArrayOfProfelemToCute());
-                    console.log(temporaryDataService.getArrayOfOrder());
-                    console.log(temporaryDataService.getArrayOfGlassOrder());
-                    temporaryDataService.removeFromArrayOfGlassOrder(scope.windows[index]);
+
+                    temporaryDataService.removeFromArrayOfGlassOrder(scope.windows[index].fun_code, scope.windows[index].id);
+                    temporaryDataService.removeFromArrayOfProfelemToCute(scope.windows[index].fun_code, scope.windows[index].id);
+                    temporaryDataService.removeFromArrayOfWindowsAfterCalculatorOfMedot(scope.windows[index].fun_code, scope.windows[index].id);
+                    temporaryDataService.removeFromArrayOfWindowsAddedInAddWindowPage(index);
                 }
 
             }

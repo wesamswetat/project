@@ -16,6 +16,7 @@
             templateUrl: 'app/directives/cutbywindows/cutbywindows.html',
             link: function (scope, elem, attr) {
                 scope.windowsTable = temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot();
+                scope.windowInfo = temporaryDataService.getWindowsFullObjectFromMySql();
 
             }
         }

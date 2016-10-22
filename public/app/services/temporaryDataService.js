@@ -42,11 +42,29 @@
         };
 
         tempData.setWindowsFullObjectFromMySql = function (funCode, window) {
+            window.abzarem_num_in_srtot = JSON.parse(window.abzarem_num_in_srtot);
+            window.abzarem_kamot = JSON.parse(window.abzarem_kamot);
+            window.abzarem_makat = JSON.parse(window.abzarem_makat);
+            window.atmem_mbrashot_makat = JSON.parse(window.atmem_mbrashot_makat);
+            window.atmem_mbrashot_num_in_srtot = JSON.parse(window.atmem_mbrashot_num_in_srtot);
+            window.glass_amount = JSON.parse(window.glass_amount);
+            window.h_des = JSON.parse(window.h_des);
+            window.h_l = JSON.parse(window.h_l);
+            window.l_des = JSON.parse(window.l_des);
+            window.profel_makat = JSON.parse(window.profel_makat);
+            window.profel_cuts = JSON.parse(window.profel_cuts);
+            window.profel_des = JSON.parse(window.profel_des);
+            window.profel_formela = JSON.parse(window.profel_formela);
+            window.zegog = JSON.parse(window.zegog);
             windowsFullObjectFromMySql[funCode] = window;
         };
 
         tempData.getWindowsFullObjectFromMySql = function (funCode) {
-            return windowsFullObjectFromMySql[funCode];
+            if(funCode){
+                return windowsFullObjectFromMySql[funCode];
+            } else {
+                return windowsFullObjectFromMySql;
+            }
         };
 
         tempData.setArrayOfWindowsAddedInAddWindowPage = function (windowOrWindowIdToDelet) {
@@ -60,15 +78,32 @@
             }
         };
 
+        tempData.removeFromArrayOfWindowsAddedInAddWindowPage = function (index) {
+            arrayOfWindowsAddedInAddWindowPage.splice(index, 1);
+        };
+
         tempData.getArrayOfWindowsAddedInAddWindowPage = function () {
             return arrayOfWindowsAddedInAddWindowPage;
         };
 
-        tempData.setArrayOfWindowsAfterCalculatorOfMedot = function (funcode, formolas, des, profelNmae, profelMakat, profelCuts) {
+        tempData.setArrayOfWindowsAfterCalculatorOfMedot = function (funcode, id, formolas) {
+
             if (arrayOfWindowsAfterCalculatorOfMedot[funcode]) {
-                arrayOfWindowsAfterCalculatorOfMedot[funcode].push(formolas);
+                arrayOfWindowsAfterCalculatorOfMedot[funcode][id] = formolas;
             } else {
-                arrayOfWindowsAfterCalculatorOfMedot[funcode] = [des, profelNmae, profelMakat, profelCuts, formolas]
+                arrayOfWindowsAfterCalculatorOfMedot[funcode] = {};
+                arrayOfWindowsAfterCalculatorOfMedot[funcode][id] = formolas;
+            }
+        };
+
+        tempData.removeFromArrayOfWindowsAfterCalculatorOfMedot = function (funCode, id) {
+            if (arrayOfWindowsAfterCalculatorOfMedot.hasOwnProperty(funCode)){
+                if (arrayOfWindowsAfterCalculatorOfMedot[funCode].hasOwnProperty(id)){
+                    delete arrayOfWindowsAfterCalculatorOfMedot[funCode][id];
+                }
+                if (Object.keys(arrayOfWindowsAfterCalculatorOfMedot[funCode]).length === 0){
+                    delete arrayOfWindowsAfterCalculatorOfMedot[funCode];
+                }
             }
         };
 
@@ -86,15 +121,11 @@
                 profelTemp = profelTemp[0];
                 if (profelTemp in arrayOfProfelemToCute) {
                     if (medotObject[i] in arrayOfProfelemToCute[profelTemp]) {
-                        if (numToCutObject[i] != '+' && medotObject[i] != '+') {
-                            arrayOfProfelemToCute[profelTemp][medotObject[i]] =
-                                eval(arrayOfProfelemToCute[profelTemp][medotObject[i]])
-                                + eval(numToCutObject[i]);
-                        } else {
-                            arrayOfProfelemToCute[profelTemp][medotObject[i]] =
-                                (arrayOfProfelemToCute[profelTemp][medotObject[i]])
-                                + '+' + (numToCutObject[i]);
-                        }
+
+                        arrayOfProfelemToCute[profelTemp][medotObject[i]] =
+                            eval(arrayOfProfelemToCute[profelTemp][medotObject[i]])
+                            + eval(numToCutObject[i]);
+
                     } else {
                         arrayOfProfelemToCute[profelTemp][medotObject[i]] = numToCutObject[i];
                     }
@@ -102,6 +133,35 @@
                     arrayOfProfelemToCute[profelTemp] = {};
                     temp = arrayOfProfelemToCute[profelTemp];
                     temp[medotObject[i]] = numToCutObject[i];
+                }
+            }
+            setArrayOfOrder();
+        };
+
+        tempData.removeFromArrayOfProfelemToCute = function (funCode, id) {
+
+            var
+                key,
+                makatem = (windowsFullObjectFromMySql[funCode].profel_makat),
+                kamot = (windowsFullObjectFromMySql[funCode].profel_cuts),
+                medot = arrayOfWindowsAfterCalculatorOfMedot[funCode][id];
+
+            for (key in makatem) {
+
+                if (makatem.hasOwnProperty(key)) {
+                    if (angular.isString(arrayOfProfelemToCute[makatem[key]][medot[key]])) {
+                        delete arrayOfProfelemToCute[makatem[key]][medot[key]];
+                    } else {
+                        arrayOfProfelemToCute[makatem[key]][medot[key]] = arrayOfProfelemToCute[makatem[key]][medot[key]] - eval(kamot[key]);
+                        if (arrayOfProfelemToCute[makatem[key]][medot[key]] === 0) {
+                            delete arrayOfProfelemToCute[makatem[key]][medot[key]];
+                        }
+                    }
+                    if (Object.keys(arrayOfProfelemToCute[makatem[key]]).length === 0) {
+                        delete arrayOfProfelemToCute[makatem[key]];
+                    }
+                } else {
+
                 }
             }
             setArrayOfOrder();
@@ -145,6 +205,9 @@
         };
 
         function setArrayOfOrder() {
+
+            arrayOfOrder = {};
+
             var
                 makat, meda, i, j, arrayOfMakats = [], ifContinue = false,
                 arrayOfMedot = [], tempArrayOfMedot = [], motot, mototTemp, order;
@@ -175,7 +238,6 @@
                 arrayOfMedot.sort(function (a, b) {
                     return b - a
                 });
-                console.log(arrayOfMedot);
                 motot = 0;
                 mototTemp = 0;
                 for (j = 0; j < arrayOfMedot.length; j = j + 1) {
@@ -212,52 +274,38 @@
 
         tempData.setArrayOfGlassOrder = function (glassFormolas, glassAmount, windowInfo) {
             var
-                key, temp,
-                temp1 =  windowInfo.indexInArrayOfWindowsAfterCalculatorOfMedot - 4;
+                key, temp;
 
             for (key in glassFormolas) {
                 if (glassFormolas.hasOwnProperty(key)) {
                     temp = glassFormolas[key].split('x');
-                    temp = eval(temp[0]).toFixed(2) + ' X ' + eval(temp[1]).toFixed(2);
+                    temp = eval(temp[0]).toFixed(2) + ' X ' + eval(temp[1]).toFixed(2) + ' X  ' + glassAmount[key];
+
                     if (arrayOfGlassOrder.hasOwnProperty(windowInfo.fun_code)) {
-                        if ( arrayOfGlassOrder[windowInfo.fun_code].hasOwnProperty(temp1)){
-                            arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
+                        if (arrayOfGlassOrder[windowInfo.fun_code].hasOwnProperty(windowInfo.id)) {
+                            arrayOfGlassOrder[windowInfo.fun_code][windowInfo.id][key] = temp;
                         } else {
-                            arrayOfGlassOrder[windowInfo.fun_code][temp1] = {};
-                            arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
-                            arrayOfGlassOrder[windowInfo.fun_code].numOfWindows += 1;
+                            arrayOfGlassOrder[windowInfo.fun_code][windowInfo.id] = {};
+                            arrayOfGlassOrder[windowInfo.fun_code][windowInfo.id][key] = temp;
                         }
                     } else {
                         arrayOfGlassOrder[windowInfo.fun_code] = {};
-                        arrayOfGlassOrder[windowInfo.fun_code][temp1] = {};
-                        arrayOfGlassOrder[windowInfo.fun_code].glassAmount = {};
-                        arrayOfGlassOrder[windowInfo.fun_code].glassAmount = glassAmount;
-                        arrayOfGlassOrder[windowInfo.fun_code][temp1][key] = temp;
-                        arrayOfGlassOrder[windowInfo.fun_code].catalogDes = windowInfo.catalogDes;
-                        arrayOfGlassOrder[windowInfo.fun_code].subject = windowInfo.subject;
-                        arrayOfGlassOrder[windowInfo.fun_code].company = windowInfo.company;
-                        arrayOfGlassOrder[windowInfo.fun_code].glassDes = windowInfo.glassDes;
-                        arrayOfGlassOrder[windowInfo.fun_code].windowDes = windowInfo.windowDes;
-                        arrayOfGlassOrder[windowInfo.fun_code].sedra_num = windowInfo.sedra_num;
-                        arrayOfGlassOrder[windowInfo.fun_code].sedra_name = windowInfo.sedra_name;
-                        arrayOfGlassOrder[windowInfo.fun_code].numOfWindows = 1;
+                        arrayOfGlassOrder[windowInfo.fun_code][windowInfo.id] = {};
+                        arrayOfGlassOrder[windowInfo.fun_code][windowInfo.id][key] = temp;
                     }
                 }
             }
-            console.log(arrayOfGlassOrder);
-            console.log(windowInfo);
-            console.log(arrayOfWindowsAddedInAddWindowPage);
         };
 
-        tempData.removeFromArrayOfGlassOrder = function (windowMedotToRemove) {
-            var
-                windowId = windowMedotToRemove.indexInArrayOfWindowsAfterCalculatorOfMedot - 4,
-                funCode = windowMedotToRemove.fun_code;
+        tempData.removeFromArrayOfGlassOrder = function (funCode, id) {
 
-            delete arrayOfGlassOrder[funCode][windowId] ;
-            arrayOfGlassOrder[funCode].numOfWindows -= 1;
-            if (arrayOfGlassOrder[funCode].numOfWindows === 0){
-                delete arrayOfGlassOrder[funCode];
+            if (arrayOfGlassOrder.hasOwnProperty(funCode)){
+                if (arrayOfGlassOrder[funCode].hasOwnProperty(id)){
+                    delete arrayOfGlassOrder[funCode][id];
+                }
+                if (Object.keys(arrayOfGlassOrder[funCode]).length === 0){
+                    delete arrayOfGlassOrder[funCode];
+                }
             }
         };
 
