@@ -16,11 +16,12 @@
             templateUrl: 'app/directives/profelsorder/profelsorder.html',
             link: function (scope, elem, attr) {
                 var
-                    allProfels, meda, numOfCuts = 0, i, order, item,
+                    allProfels, numOfCuts = 0, i, order, item,
                     meskalOfMotot , meshkalOfLessMott;
 
                 scope.order = temporaryDataService.getArrayOfOrder();
                 allProfels = temporaryDataService.getArrayOfAllProfelsOfAllWindowsFullDataFromMysql();
+                scope.isShow = false;
 
                 for (item in scope.order){
                     if (scope.order.hasOwnProperty(item)){
@@ -31,6 +32,7 @@
                         scope.order[item].company = allProfels[item].company;
                         scope.order[item].pic = allProfels[item].pic;
                     }
+                    scope.isShow = true;
                 }
                 // for (makat in allProfelsWithCuts){
                 //     if (allProfelsWithCuts.hasOwnProperty(makat)){

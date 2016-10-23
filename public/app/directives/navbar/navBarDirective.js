@@ -14,6 +14,10 @@
                     URL = localDataService.getUrl(),
                     buttonGrop = localDataService.buttonsGroup[0];
 
+                scope.goHome = function () {
+                    scope.$broadcast('someEvent', [1,2,3]);
+                };
+
                 scope.user = localDataService.getUser();
 
                 scope.auth = function (to) {

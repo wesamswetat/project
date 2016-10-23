@@ -1,7 +1,7 @@
 <section class="container">
     <hr>
     <div>
-        <table class="table table-bordered table-striped">
+        <table ng-if="isShow" class="table table-bordered table-striped">
 
             <thead>
             <tr>
@@ -32,5 +32,4 @@
         </table>
 
     </div>
-    <pre style="direction: ltr"> {{order | json}}</pre>
 </section>

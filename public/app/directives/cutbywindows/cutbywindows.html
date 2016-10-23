@@ -1,5 +1,5 @@
 <section class="container ">
-
+    <hr>
     <div style="overflow: scroll"  ng-repeat="(funcode, windowId) in windowsTable" class="panel panel-info">
         <div class="panel-heading "> {{windowInfo[funcode].des}}</div>
         <div class="panel-body">
@@ -25,8 +25,6 @@
         </div>
     </div>
 
-    <pre style="direction: ltr">{{windowsTable | json}}</pre>
-    <pre style="direction: ltr">{{windowInfo | json}}</pre>
 
 </section>
 

@@ -13,23 +13,43 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-rtl.min.css')}}">
 
+
+
     <!-- MY  stylesheet -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.Laravel =<?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
-<body>
+<body ng-controller="mainController">
 
 
 <nav-bar></nav-bar>
 <ui-view></ui-view>
 
+<footer class="footer bg-success">
+    <div class="container">
+        <div class="row">
+            <div ng-click="input('hearUs')" class="col-md-3 footer-item">
+                <h5>האתר בהרצה נשמח לשמוע את דעתך</h5>
+            </div>
+            <div ng-click="input('request')" class="col-md-3 footer-item">
+                <h5>בקשה להוספת חלון/דלת</h5>
+            </div>
+            <div class="col-md-3">
+                <h5></h5>
+            </div>
+            <div ng-click="input('contact')"  class="col-md-2 footer-item">
+                <h5 >צור קשר</h5>
+            </div>
+        </div>
+    </div>
+</footer>
 <!-- Angular JS AND LIBRARYS-->
 <script src="{{asset('js/angular.min.js')}}"></script>
 <script src="{{asset('js/angular-ui-router.min.js')}}"></script>
@@ -73,5 +93,8 @@
 <script src="{{asset('app/directives/cutbyprofel/cuteByProfel.js')}}"></script>
 <script src="{{asset('app/directives/profelsorder/profelsOrder.js')}}"></script>
 <script src="{{asset('app/directives/glassorder/glassOrder.js')}}"></script>
+<script src="{{asset('app/directives/contact/contactDirective.js')}}"></script>
+<script src="{{asset('app/directives/userrequset/userRequest.js')}}"></script>
+<script src="{{asset('app/directives/hearus/hearUs.js')}}"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 
 body{
     direction: rtl;
+    padding-bottom: 60px;
 }
 
 /* ################## Add Window Directive ###################*/
@@ -9,3 +10,28 @@ body{
     margin-top: 15px;
     direction: rtl;
 }
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 35px;
+}
+
+.footer-item{
+    margin: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.footer-item:hover{
+    background-color: #1b6d85;
+}
+

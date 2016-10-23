@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/pdf', function () {
+
+});
+
 Route::get('/checkuser', function () {
 
     if (Auth::check()) {

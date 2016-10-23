@@ -1,0 +1,74 @@
+<section class="container">
+    <hr>
+    <div>
+        <form ng-submit="onSubmit(messageForm.$valid)"
+              novalidate="novalidate"
+              name="messageForm"
+              role="form">
+
+            <div class="form-group col-md-5">
+                <label for="name" class="control-label">שם מלא</label>
+                <input
+                        required="required"
+                        ng-model="message.sedraName"
+                        type="text"
+                        id="name"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="phone" class="control-label">מס' טלפון</label>
+                <input
+                        required="required"
+                        ng-model="message.phone"
+                        type="number"
+                        id="phone"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="email" class="control-label">דוא"ל</label>
+                <input
+                        required="required"
+                        ng-model="message.email"
+                        type="email"
+                        id="email"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="subject" class="control-label">נושא</label>
+                <input
+                        required="required"
+                        ng-model="message.subject"
+                        type="text"
+                        id="subject"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-10">
+                <label for="message" class="control-label">נושא</label>
+                <textarea
+                        required="required"
+                        ng-model="message.message"
+                        id="message"
+                        class="form-control">
+                </textarea>
+            </div>
+
+            <div class="form-group col-md-3">
+                <button
+                        type="submit"
+                        class="btn btn-primary">שלח
+                    <i class="fa fa-btn fa-send fa-rotate-270"></i>
+                </button>
+                <button
+                        class="btn btn-warning"
+                        type="reset">איפוס
+                    <i class="fa fa-btn fa-remove"></i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>

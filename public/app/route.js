@@ -12,7 +12,7 @@
     route.config(function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider
-            .otherwise('/home');
+            .otherwise('home/' + navigationButtons[0]);
 
         $stateProvider
         /////////////
@@ -23,7 +23,7 @@
                 template: '<buttons-directive></buttons-directive><div ui-view></div>',
                 controller: 'homeController'
             })
-            .state('home.' + navigationButtons[0], {
+            .state('home.הוספת חלון', {
                 url: '/' + navigationButtons[0],
                 template: '<add-window-directive></add-window-directive>'
             })
@@ -42,6 +42,18 @@
             .state('home.' + navigationButtons[4], {
                 url: '/' + navigationButtons[4],
                 template: '<glass-order></glass-order>'
+            })
+            .state('contact', {
+                url: '/contact',
+                template: '<contact-us></contact-us>'
+            })
+            .state('request', {
+                url: '/request',
+                template: '<user-request></user-request>'
+            })
+            .state('hearUs', {
+                url: '/hearus',
+                template: '<hear-us></hear-us>'
             })
             /////////////
             /// Auth ///

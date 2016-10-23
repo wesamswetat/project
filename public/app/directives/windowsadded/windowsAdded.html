@@ -1,39 +1,41 @@
-<table ng-if="windows.length > 0" class="table table-bordered table-striped">
-
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>רוחב</th>
-        <th>גובהה</th>
-        <th>חברה</th>
-        <th>סדרה</th>
-        <th>תאור חלון</th>
-        <th>מס' נתיבים</th>
-        <th>מחיר</th>
-        <th>מחיקה</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="window in windows track by $index">
-        <th scope="row">{{$index + 1}}</th>
-        <td>{{window.width[0]}}</td>
-        <td>{{window.height[0]}}</td>
-        <td>{{window.company}}</td>
-        <td>{{window.sedra_name}} {{window.sedra_num}}</td>
-        <td>{{window.catalogDes}}<br>{{window.windowDes}}<br>{{window.glassDes}}</td>
-        <td>{{window.subject}}</td>
-        <td>{{window.price}}</td>
-        <td>
-            <button
-                    ng-click="remove($index)"
-                    class="btn btn-danger"> מחק
-                <i class="fa fa-btn fa-remove"></i>
-            </button>
-        </td>
-    </tr>
-    </tbody>
+<section>
 
 
-</table>
+    <table ng-if="windows.length > 0" class="table table-bordered table-striped">
 
-<pre> {{windows | json}}</pre>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>רוחב</th>
+            <th>גובהה</th>
+            <th>חברה</th>
+            <th>סדרה</th>
+            <th>תאור חלון</th>
+            <th>מס' נתיבים</th>
+            <th>מחיר</th>
+            <th>מחיקה</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="window in windows track by $index">
+            <th scope="row">{{$index + 1}}</th>
+            <td>{{window.width[0]}}</td>
+            <td>{{window.height[0]}}</td>
+            <td>{{window.company}}</td>
+            <td>{{window.sedra_name}} {{window.sedra_num}}</td>
+            <td>{{window.catalogDes}}<br>{{window.windowDes}}<br>{{window.glassDes}}</td>
+            <td>{{window.subject}}</td>
+            <td>{{window.price}}</td>
+            <td>
+                <button
+                        ng-click="remove($index)"
+                        class="btn btn-danger"> מחק
+                    <i class="fa fa-btn fa-remove"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+
+
+    </table>
+</section>

@@ -10,8 +10,8 @@
                 <span class="icon-bar"></span>
             </button>
             <div>
-                <a ui-sref="home" class="navbar-brand brand-name"> אלום </a>
-                <span class="brand-des">אתר למפעלי אלומיניום – לביצוע הצעות מחיר, הזמנות חומר והוראות ייצור</span>
+                <a ng-mouseup="goHome()" ui-sref="home.הוספת חלון" class="navbar-brand brand-name"> אלום </a>
+                <span  class="brand-des">אתר למפעלי אלומיניום – לביצוע הצעות מחיר, הזמנות חומר והוראות ייצור</span>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
             <!-- left Side Of Navbar -->
             <ul class="nav navbar-nav navbar-left">
                 <!-- Authentication Links -->
-                <li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li ><a ng-mouseup="goHome()" ui-sref="home.הוספת חלון"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                 <li ng-if="!user.email"><a ui-sref="login">כניסה</a></li>
                 <li ng-if="!user.email"><a ui-sref="register">הרשמה</a></li>
 

@@ -1,0 +1,35 @@
+<section class="container">
+    <hr>
+    <div>
+        <form ng-submit="onSubmit(messageForm.$valid)"
+              novalidate="novalidate"
+              name="messageForm"
+              role="form">
+
+            <div class="form-group col-md-10">
+                <label for="message" class="control-label">הערות </label>
+                <textarea
+                        style="height: 200px"
+                        required="required"
+                        ng-model="message.message"
+                        id="message"
+                        class="form-control">
+                </textarea>
+            </div>
+
+            <div class="form-group col-md-3">
+                <button
+                        type="submit"
+                        class="btn btn-primary">שלח
+                    <i class="fa fa-btn fa-send fa-rotate-270"></i>
+                </button>
+                <button
+                        class="btn btn-warning"
+                        type="reset">איפוס
+                    <i class="fa fa-btn fa-remove"></i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>

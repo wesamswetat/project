@@ -28,10 +28,10 @@
                 };
 
                 $timeout(function () {
-                    console.log(scope.window[0]);
-                    scope.hl = (scope.window[0].h_l) ;
-                    scope.l = (scope.window[0].l_des) ;
-                    scope.h = (scope.window[0].h_des) ;
+                    console.log(scope.window);
+                    scope.hl = (scope.window.h_l) ;
+                    scope.l = (scope.window.l_des) ;
+                    scope.h = (scope.window.h_des) ;
                     console.log(scope.hl);
                     console.log(scope.h);
                     console.log(scope.l);

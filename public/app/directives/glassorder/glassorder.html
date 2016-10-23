@@ -1,13 +1,13 @@
 <section class="container">
     <hr>
     <div>
-        <table class="table table-bordered table-striped">
+        <table ng-if="isShow" class="table table-bordered table-striped">
 
             <thead>
             <tr>
                 <th>#</th>
-                <th>תמונת פרופיל</th>
-                <th>מספר/מק"ט</th>
+                <th>חלון/דלת</th>
+                <th>חברה</th>
                 <th>תיאור</th>
                 <th>רוחב X גובהה X כמות</th>
             </tr>
@@ -15,15 +15,15 @@
             <tbody>
             <tr ng-repeat="(key, value) in glasses track by $index">
                 <th scope="row">{{$index + 1}}</th>
-                <td>{{value.catalogDes}}</td>
-                <td>{{value.company}} {{value.sedra_name}} {{value.sedra_num}}</td>
-                <td>{{value.subject}}</td>
+                <td>{{windowsInfo[key].des}}</td>
+                <td>{{windowsInfo[key].sedra_name}} {{windowsInfo[key].sedra_num}}</td>
+                <td>{{windowsInfo[key].subject}} </td>
                 <td>
                     <table class="table">
                         <tbody>
-                        <tr ng-repeat="item in applyChange(value.numOfWindows) track by $index" >
+                        <tr ng-repeat="item in value track by $index" >
                             <td >
-                                <div style="direction: ltr" ng-repeat="meda in value[$index] track by $index">{{meda}} X {{value.glassAmount[$index]}}</div>
+                                <div style="direction: ltr" ng-repeat="meda in item track by $index">{{meda}}</div>
                             </td>
                         </tr>
                         </tbody>
@@ -32,7 +32,7 @@
             </tr>
             </tbody>
 
-
         </table>
     </div>
+
 </section>
