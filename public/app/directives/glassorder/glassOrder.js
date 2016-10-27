@@ -9,7 +9,6 @@
     function glassOrderFunction(temporaryDataService) {
         return{
             restrict: 'EA',
-            replace: true,
             templateUrl: 'app/directives/glassorder/glassorder.html',
             link : function (scope, elmen, atrr) {
                 scope.glasses = temporaryDataService.getArrayOfGlassOrder();

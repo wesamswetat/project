@@ -14,7 +14,6 @@
         return {
             restrict: 'EA',
             scope: {},
-            replace: true,
             templateUrl: 'app/directives/addwindow/addwindow.html',
             link: function (scope, elme, attr) {
                 var

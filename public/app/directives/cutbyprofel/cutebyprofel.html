@@ -1,6 +1,7 @@
-<section class="container">
+<section  class="container">
     <hr>
-    <table class="table table-bordered table-striped">
+    <print-directive ng-if="isShow" print-id="cute-by-profel"></print-directive>
+    <table id="cute-by-profel" ng-if="isShow" class="table table-bordered table-striped">
         <thead>
         <!--<tr>-->
             <!--<th>מק"ט</th>-->
@@ -9,8 +10,25 @@
         <tbody>
         <tr ng-repeat="( makat , medot ) in cutsByProfel track by $index">
             <td >{{makat}}</td>
-            <td ng-repeat="( meda , numOfCuts ) in medot">{{numOfCuts}} <br> {{meda}}</td>
+            <td ng-repeat="( meda , numOfCuts ) in medot">{{numOfCuts}}# <br> {{meda}}</td>
         </tr>
         </tbody>
     </table>
 </section>
+
+<style>
+    @media print {
+        /* All your print styles go here */
+        footer, header, buttons-directive, add-window-directive, print-directive, pdf {
+            display: none;
+        }
+
+        th , td{
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+    }
+</style>

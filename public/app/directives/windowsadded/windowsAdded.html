@@ -1,8 +1,7 @@
-<section>
+<section class="container" ng-if="windows.length > 0">
 
-
-    <table ng-if="windows.length > 0" class="table table-bordered table-striped">
-
+    <print-directive print-id="windows-table"></print-directive>
+    <table id="windows-table"  class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>#</th>
@@ -39,3 +38,28 @@
 
     </table>
 </section>
+
+<style>
+    @media print {
+        /* All your print styles go here */
+        footer, header, buttons-directive, add-window-directive, print-directive, pdf {
+            display: none;
+        }
+
+        windows-added {
+            display: block !important;
+        }
+
+        windows-added th , td{
+            text-align: center;
+        }
+
+        windows-added tr:nth-child(even) {
+            background-color: #ccc;
+        }
+
+        windows-added tr > th:last-child, td:last-child {
+            display: none;
+        }
+    }
+</style>

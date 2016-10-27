@@ -11,12 +11,9 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
-});
-
-Route::get('/pdf', function () {
-
 });
 
 Route::get('/checkuser', function () {
@@ -36,6 +33,8 @@ Route::get('/checkuser', function () {
 
 Route::auth();
 
+Route::post('/pdf', 'PdfController@getPdf');
+
 Route::get('/home', 'HomeController@index');
 Route::get('auth/logout', 'Auth\AuthController@logout');
 
@@ -49,3 +48,7 @@ Route::get('/company/{name}', 'getWindowsInfoController@getSedrotOfCompany');
 Route::get('/company/windows/{company}/{sedra}', 'getWindowsInfoController@getAllWindowsOfSedra');
 Route::get('/window/{funcode}', 'getWindowsInfoController@getWindowFullObject');
 Route::post('/profels', 'getWindowsInfoController@getProfels');
+
+Route::post('/hearus', 'CustomersController@hearUs');
+Route::post('/hearustoadd', 'CustomersController@hearUsAddWindow');
+Route::post('/contacts', 'CustomersController@contacts');

@@ -1,7 +1,7 @@
 <section class="container">
     <hr>
     <div>
-        <form ng-submit="onSubmit(messageForm.$valid)"
+        <form ng-submit="onSubmit(messageForm)"
               novalidate="novalidate"
               name="messageForm"
               role="form">
@@ -10,9 +10,10 @@
                 <label for="name" class="control-label">שם מלא</label>
                 <input
                         required="required"
-                        ng-model="message.sedraName"
+                        ng-model="message.fullName"
                         type="text"
                         id="name"
+                        ng-maxlength="50"
                         class="form-control">
             </div>
 
@@ -21,7 +22,8 @@
                 <input
                         required="required"
                         ng-model="message.phone"
-                        type="number"
+                        ng-maxlength="12"
+                        type="text"
                         id="phone"
                         class="form-control">
             </div>
@@ -32,6 +34,7 @@
                         required="required"
                         ng-model="message.email"
                         type="email"
+                        ng-maxlength="50"
                         id="email"
                         class="form-control">
             </div>
@@ -43,15 +46,17 @@
                         ng-model="message.subject"
                         type="text"
                         id="subject"
+                        ng-maxlength="50"
                         class="form-control">
             </div>
 
             <div class="form-group col-md-10">
-                <label for="message" class="control-label">נושא</label>
+                <label for="message" class="control-label">הערות</label>
                 <textarea
                         required="required"
                         ng-model="message.message"
                         id="message"
+                        ng-maxlength="250"
                         class="form-control">
                 </textarea>
             </div>
@@ -70,5 +75,7 @@
             </div>
 
         </form>
+        <span ng-if="shoSuccessMessage" class="col-md-12"
+              style="color: #0000FF"> הודעתך נשלחה בהצלחה... תודה שכתבת אלינו</span>
     </div>
 </section>

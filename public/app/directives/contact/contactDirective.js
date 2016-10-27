@@ -7,20 +7,29 @@
 
     contact.directive('contactUs', contactDirectiveFunction);
 
-    function contactDirectiveFunction() {
+    function contactDirectiveFunction($http, localDataService) {
         return{
             restrict: 'EA',
             replace: true,
             templateUrl: 'app/directives/contact/contact.html',
             link: function (scope, elme, attr) {
+                var URL = localDataService.getUrl();
                 scope.message = {};
+                scope.shoSuccessMessage = false;
 
-                scope.onSubmit = function (valid) {
-                    if (valid){
-
+                scope.onSubmit = function (messageForm) {
+                    if (messageForm.$valid) {
+                        $http({method: 'POST', url: URL + '/contacts', data: scope.message})
+                            .then(function successCallBack(response) {
+                                console.log(response.data);
+                                if (response.data === 'true') {
+                                    messageForm.$setPristine(true);
+                                    scope.message = {};
+                                    scope.shoSuccessMessage = true;
+                                }
+                            })
                     }
                 }
-
             }
         }
     }

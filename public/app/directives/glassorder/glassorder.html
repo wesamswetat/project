@@ -1,7 +1,8 @@
 <section class="container">
     <hr>
+    <print-directive ng-if="isShow" print-id="glass"></print-directive>
     <div>
-        <table ng-if="isShow" class="table table-bordered table-striped">
+        <table id="glass" ng-if="isShow" class="table table-bordered table-striped">
 
             <thead>
             <tr>
@@ -36,3 +37,20 @@
     </div>
 
 </section>
+
+<style>
+    @media print {
+        /* All your print styles go here */
+        footer, header, buttons-directive, add-window-directive, print-directive, pdf {
+            display: none;
+        }
+
+        th , td{
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+    }
+</style>

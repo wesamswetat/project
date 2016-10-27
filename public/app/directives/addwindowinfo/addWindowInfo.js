@@ -15,7 +15,6 @@
             scope: {
                 window: '='
             },
-            replace: true,
             templateUrl: 'app/directives/addwindowinfo/addWindowInfo1.html',
             link: function (scope, elme, attr) {
                 var i, temp = 0, isValed = true;

@@ -16,6 +16,11 @@
             templateUrl: 'app/directives/cutbyprofel/cutebyprofel.html',
             link: function (scope, elme, attr) {
                 scope.cutsByProfel = temporaryDataService.getArrayOfProfelemToCute();
+                scope.isShow = false;
+
+                if (Object.keys(scope.cutsByProfel).length > 0){
+                    scope.isShow = true;
+                }
             }
         }
     }

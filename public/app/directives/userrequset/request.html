@@ -1,47 +1,52 @@
 <section class="container">
     <hr>
     <div>
-        <form ng-submit="onSubmit(messageForm.$valid)"
+        <form ng-submit="onSubmit(messageForm)"
               novalidate="novalidate"
               name="messageForm"
               role="form">
 
             <div class="form-group col-md-5">
-                <label for="name" class="control-label">שם חברה</label>
+                <label for="company" class="control-label">שם חברה</label>
+                <input
+                        required="required"
+                        ng-model="message.company"
+                        type="text"
+                        ng-maxlength="15"
+                        id="company"
+                        class="form-control">
+            </div>
+
+            <div class="form-group col-md-5">
+                <label for="sedraName" class="control-label">שם סדרה</label>
                 <input
                         required="required"
                         ng-model="message.sedraName"
                         type="text"
-                        id="name"
+                        ng-maxlength="15"
+                        id="sedraName"
                         class="form-control">
             </div>
 
             <div class="form-group col-md-5">
-                <label for="phone" class="control-label">שם סדרה</label>
+                <label for="sedraNum" class="control-label">מס' סדרה</label>
                 <input
                         required="required"
-                        ng-model="message.phone"
+                        ng-model="message.sedraNum"
                         type="text"
-                        id="phone"
+                        ng-maxlength="15"
+                        id="sedraNum"
                         class="form-control">
             </div>
 
             <div class="form-group col-md-5">
-                <label for="email" class="control-label">מס' סדרה</label>
+                <label for="email" class="control-label">דוא"ל</label>
                 <input
-                        required="required"
                         ng-model="message.email"
-                        type="number"
-                        id="email"
-                        class="form-control">
-            </div>
-
-            <div class="form-group col-md-5">
-                <label for="subject" class="control-label">דוא"ל</label>
-                <input
-                        ng-model="message.subject"
                         type="email"
-                        id="subject"
+                        id="email"
+                        ng-maxlength="50"
+                        placeholder="לא חובה"
                         class="form-control">
             </div>
 
@@ -50,6 +55,8 @@
                 <textarea
                         ng-model="message.message"
                         id="message"
+                        ng-maxlength="250"
+                        placeholder="לא חובה"
                         class="form-control">
                 </textarea>
             </div>
@@ -69,4 +76,5 @@
 
         </form>
     </div>
+    <span ng-if="shoSuccessMessage" class="col-md-12" style="color: #0000FF"> הודעתך נשלחה בהצלחה... תודה שכתבת אלינו</span>
 </section>

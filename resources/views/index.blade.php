@@ -15,8 +15,11 @@
 
 
 
+
+
     <!-- MY  stylesheet -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link href="{{asset('css/print.css')}}" rel="stylesheet" media="print" type="text/css" />
 
 
     <!-- Scripts -->
@@ -96,5 +99,7 @@
 <script src="{{asset('app/directives/contact/contactDirective.js')}}"></script>
 <script src="{{asset('app/directives/userrequset/userRequest.js')}}"></script>
 <script src="{{asset('app/directives/hearus/hearUs.js')}}"></script>
+<script src="{{asset('app/directives/pdf/pdfDirective.js')}}"></script>
+<script src="{{asset('app/directives/print/printDirective.js')}}"></script>
 </body>
 </html>

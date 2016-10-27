@@ -25,7 +25,7 @@
             })
             .state('home.הוספת חלון', {
                 url: '/' + navigationButtons[0],
-                template: '<add-window-directive></add-window-directive>'
+                template: '<add-window-directive></add-window-directive><windows-added></windows-added>'
             })
             .state('home.' + navigationButtons[1], {
                 url: '/' + navigationButtons[1],

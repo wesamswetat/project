@@ -12,7 +12,6 @@
     function profelsOrderFunction($http, temporaryDataService) {
         return{
             restrict: 'EA',
-            replace: true,
             templateUrl: 'app/directives/profelsorder/profelsorder.html',
             link: function (scope, elem, attr) {
                 var
