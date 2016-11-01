@@ -32,7 +32,7 @@
 
                     if (angular.isObject(response.data)){
                         localDataService.setUser(response.data);
-                        $state.go('home');
+                        $state.go('home.הוספת חלון');
                     }else if (response.data === 'false'){
                         $scope.showErrorMessage = true;
                     }

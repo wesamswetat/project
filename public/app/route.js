@@ -20,8 +20,15 @@
         ////////////
             .state('home', {
                 url: '/home',
-                template: '<buttons-directive></buttons-directive><div ui-view></div>',
-                controller: 'homeController'
+                views: {
+                    'main': {
+                        template: '<buttons-directive></buttons-directive><div ui-view></div>',
+                        controller: 'homeController'
+                    },
+                    'left':{
+                        template: '<client-offer></client-offer>'
+                    }
+                }
             })
             .state('home.הוספת חלון', {
                 url: '/' + navigationButtons[0],
@@ -45,48 +52,73 @@
             })
             .state('contact', {
                 url: '/contact',
-                template: '<contact-us></contact-us>'
+                views: {
+                    'main': {
+                        template: '<contact-us></contact-us>'
+                    }
+                }
+
             })
             .state('request', {
                 url: '/request',
-                template: '<user-request></user-request>'
+                views: {
+                    'main': {
+                        template: '<user-request></user-request>'
+                    }
+                }
             })
             .state('hearUs', {
                 url: '/hearus',
-                template: '<hear-us></hear-us>'
+                views: {
+                    'main': {
+                        template: '<hear-us></hear-us>'
+                    }
+                }
             })
             /////////////
             /// Auth ///
             ////////////
             .state('login', {
                 url: '/login',
-                templateUrl: 'app/views/login.html',
-                controller: 'loginController'
+                views: {
+                    'main': {
+                        templateUrl: 'app/views/login.html',
+                        controller: 'loginController'
+                    }
+                }
             })
             .state('register', {
                 url: '/register',
-                templateUrl: 'app/views/register.html',
-                controller: 'registerController'
+                views: {
+                    'main': {
+                        templateUrl: 'app/views/register.html',
+                        controller: 'registerController'
+                    }
+                }
             })
             /////////////
             /// admin ///
             ////////////
             .state('admin', {
                 url: '/admin',
-                templateUrl: 'app/admin/views/mainadmin.html',
-                controller: 'mainAdminController'
+                views: {
+                    'main': {
+                        templateUrl: 'app/admin/views/mainadmin.html',
+                        controller: 'mainAdminController'
+                    }
+                }
             })
-            .state('admin.addwindow',{
+            .state('admin.addwindow', {
                 url: '/addwindow',
                 templateUrl: 'app/admin/views/adminaddwindow.html',
                 controller: 'adminAddWindowController'
             })
-            .state('admin.addprofel',{
+            .state('admin.addprofel', {
                 url: '/addprofel',
                 templateUrl: 'app/admin/views/adminaddprofel.html',
                 controller: 'adminAddProfelController'
             })
-            .state('admin.addabzarem',{
+            .state('admin.addabzarem', {
                 url: '/addabzarem',
                 templateUrl: 'app/admin/views/adminaddabzarem.html',
                 controller: 'adminAddabzaremController'

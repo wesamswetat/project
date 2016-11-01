@@ -23,7 +23,7 @@
                     .then(successCallback , errorCallBack);
                 function successCallback(response) {
                     console.log(response.data);
-                    $state.go('home');
+                    $state.go('home.הוספת חלון');
                 }
                 function errorCallBack(response) {
                     console.log(response.data);

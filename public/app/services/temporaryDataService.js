@@ -190,6 +190,7 @@
                 }
             }
 
+            console.log(temp);
             if (Object.keys(temp.data).length > 0) {
                 $http({method: 'POST', url: URL + '/profels', data: temp})
                     .then(function successCallBack(response) {
@@ -240,7 +241,9 @@
                 });
                 motot = 0;
                 mototTemp = 0;
+                ifContinue = false;
                 for (j = 0; j < arrayOfMedot.length; j = j + 1) {
+
                     if (j === (arrayOfMedot.length - 1) && ifContinue) {
                         if (mototTemp + arrayOfMedot[j] < 600) {
                             mototTemp = mototTemp + arrayOfMedot[j] + 0.5;

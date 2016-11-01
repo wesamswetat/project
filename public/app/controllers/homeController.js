@@ -9,18 +9,20 @@
 
     homeController.controller('homeController', homeControllerFunction);
 
-    function homeControllerFunction($http, $state, localDataService) {
+    function homeControllerFunction($http, $timeout, $state, localDataService) {
 
         var
             user = localDataService.getUser(),
             URL = localDataService.getUrl();
         
         if (! user.name){
-            $http({method: 'GET', url: URL + '/checkuser'})
-                .then(function successCallBack(response) {
-                    //angular.copy(response.data, user)
-                    localDataService.setUser(response.data);
-                });
+            $timeout(function () {
+                $http({method: 'GET', url: URL + '/checkuser'})
+                    .then(function successCallBack(response) {
+                        //angular.copy(response.data, user)
+                        localDataService.setUser(response.data);
+                    });
+            });
         }
     }
 

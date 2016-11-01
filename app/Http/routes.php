@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/google655e6ce561ef9702.html', function () {
+    return 'google-site-verification: google655e6ce561ef9702.html';
+});
+
 Route::get('/checkuser', function () {
 
     if (Auth::check()) {

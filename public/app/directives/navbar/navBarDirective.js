@@ -26,7 +26,7 @@
                         case 'logout':
                             $http({method: 'GET', url: URL+'/logout'})
                                 .then(function successCallBack(response) {
-                                    $state.go('home');
+                                    $state.go('home.הוספת חלון');
                                 });
                             localDataService.setUser({});
                             break;
