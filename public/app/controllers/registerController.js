@@ -22,11 +22,9 @@
                 $http({method: 'POST', url: URL + '/register', data: $scope.newUser})
                     .then(successCallback , errorCallBack);
                 function successCallback(response) {
-                    console.log(response.data);
                     $state.go('home.הוספת חלון');
                 }
                 function errorCallBack(response) {
-                    console.log(response.data);
                    if (angular.isObject(response.data)){
                        if (response.data.hasOwnProperty('email')){
                           if (response.data.email[0] === 'The email has already been taken.'){

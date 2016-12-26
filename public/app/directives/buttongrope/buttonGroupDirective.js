@@ -16,7 +16,6 @@
                 var temp = $location.path();
                 temp = temp.replace('/home/', '');
                 scope.button = temp;
-                console.log(temp);
                 scope.active = function (index) {
                     scope.button = scope.navigationButtons[index];
                     $state.go('home.'+scope.button);

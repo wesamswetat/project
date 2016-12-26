@@ -1,5 +1,6 @@
 <section class=" ">
     <hr>
+    <div ng-if="!isShow()">אין נתונים להצגה </div>
     <div style="overflow: scroll"  ng-repeat="(funcode, windowId) in windowsTable" class="panel panel-info">
         <div class="panel-heading "> {{windowInfo[funcode].des}}</div>
         <div class="panel-body">
@@ -24,7 +25,6 @@
 
         </div>
     </div>
-
 
 </section>
 

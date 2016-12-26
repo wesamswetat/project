@@ -21,7 +21,7 @@
                     if (messageForm.$valid) {
                         $http({method: 'POST', url: URL + '/contacts', data: scope.message})
                             .then(function successCallBack(response) {
-                                console.log(response.data);
+
                                 if (response.data === 'true') {
                                     messageForm.$setPristine(true);
                                     scope.message = {};

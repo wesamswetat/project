@@ -7,7 +7,8 @@
     var alomApp = angular.module('alom',
         [
             'ui.router',
-            'jcs-autoValidate'
+            'jcs-autoValidate',
+            'ui.select'
         ]);
 
 

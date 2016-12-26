@@ -9,7 +9,7 @@
 
     profelsOrder.directive('profelsOrder', profelsOrderFunction);
 
-    function profelsOrderFunction($http, temporaryDataService) {
+    function profelsOrderFunction($state, temporaryDataService) {
         return{
             restrict: 'EA',
             templateUrl: 'app/directives/profelsorder/profelsorder.html',
@@ -20,6 +20,7 @@
 
                 scope.order = temporaryDataService.getArrayOfOrder();
                 allProfels = temporaryDataService.getArrayOfAllProfelsOfAllWindowsFullDataFromMysql();
+                scope.allMeshkal = 0;
                 scope.isShow = false;
 
                 for (item in scope.order){
@@ -30,21 +31,12 @@
                         scope.order[item].profelDes = allProfels[item].des;
                         scope.order[item].company = allProfels[item].company;
                         scope.order[item].pic = allProfels[item].pic;
+                        scope.allMeshkal = (Number(scope.allMeshkal) + Number(scope.order[item].meshkal)).toFixed(2);
                     }
                     scope.isShow = true;
                 }
-                // for (makat in allProfelsWithCuts){
-                //     if (allProfelsWithCuts.hasOwnProperty(makat)){
-                //         for (meda in allProfelsWithCuts[makat]){
-                //             if (allProfelsWithCuts[makat].hasOwnProperty(meda)){
-                //                 numOfCuts = allProfelsWithCuts[makat][meda];
-                //                 for (i = 0; i < numOfCuts; i = i + 1){
-                //
-                //                 }
-                //             }
-                //         }
-                //     }
-                // }
+
+
             }
         }
 

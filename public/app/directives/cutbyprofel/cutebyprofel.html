@@ -1,5 +1,6 @@
 <section  class="">
     <hr>
+    <div ng-if="!isShow">אין נתונים להצגה </div>
     <print-directive ng-if="isShow" print-id="cute-by-profel"></print-directive>
     <table id="cute-by-profel" ng-if="isShow" class="table table-bordered table-striped">
         <thead>
@@ -17,18 +18,5 @@
 </section>
 
 <style>
-    @media print {
-        /* All your print styles go here */
-        footer, header, buttons-directive, add-window-directive, print-directive, pdf {
-            display: none;
-        }
 
-        th , td{
-            text-align: center;
-        }
-
-        tr:nth-child(even) {
-            background-color: #ddd;
-        }
-    }
 </style>

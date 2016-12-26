@@ -7,6 +7,7 @@
 
         <div class="row">
             <div ng-repeat="time in getTimes(hl.h) track by $index" class="form-group col-md-2">
+                <label  for="glassDes" class="control-label">{{h[$index]}}</label>
                 <div>
                        <input
                             required="required"
@@ -14,6 +15,8 @@
                             id="height"
                             type="number"
                             ng-minlength="2"
+                            ng-max-err-type="heightMax"
+                            ng-minlength-err-type="towChar"
                             min="0"
                             max="600"
                             ng-model="windowHeightWidthAndInfo.height[$index]"
@@ -24,6 +27,7 @@
         </div>
         <div class="row">
             <div ng-repeat="time in getTimes(hl.l) track by $index" class="form-group col-md-2">
+                <label  for="glassDes" class="control-label">{{l[$index]}}</label>
                 <div>
                     <input
                             required="required"
@@ -31,8 +35,10 @@
                             id="width"
                             type="number"
                             ng-minlength="2"
-                            min="0"
                             max="600"
+                            ng-max-err-type="widthMax"
+                            ng-minlength-err-type="towChar"
+                            min="0"
                             ng-model="windowHeightWidthAndInfo.width[$index]"
                             class="form-control"
                             name="name">
@@ -42,12 +48,15 @@
 
         <div class="row">
             <div class="form-group col-md-2">
+                <label  for="cost" class="control-label">מחיר למטר</label>
                 <div>
                     <input
-                            placeholder="מחיר למתר"
+                            placeholder="מחיר למטר"
+                            required="required"
                             id="cost"
                             type="number"
                             ng-minlength="2"
+                            ng-minlength-err-type="towChar"
                             min="0"
                             ng-model="windowHeightWidthAndInfo.cost"
                             class="form-control"
@@ -55,13 +64,15 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-sm-6 col-md-4">
+                <label  for="windowDes" class="control-label">תיאור חלון</label>
                 <div>
                     <input
                             placeholder="תיאור חלון"
                             id="windowDes"
                             type="text"
-                            ng-minlength="2"
+                            ng-minlength="5"
+                            ng-minlength-err-type="towChar"
                             min="0"
                             ng-model="windowHeightWidthAndInfo.windowDes"
                             class="form-control"
@@ -69,31 +80,48 @@
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-sm-6 col-md-4">
+                <label  for="glassDes" class="control-label">תיאור זכוכית</label>
                 <div>
                     <input
                             placeholder="תיאור זכוכית"
                             id="glassDes"
                             type="text"
-                            ng-minlength="2"
+                            ng-minlength="5"
                             min="0"
+                            ng-minlength-err-type="towChar"
                             ng-model="windowHeightWidthAndInfo.glassDes"
                             class="form-control"
                             name="name">
                 </div>
             </div>
 
-            <button
-                    type="submit"
-                    class="btn btn-primary"> הוסף
-                <i class="fa fa-btn fa-plus"></i>
-            </button>
 
-            <button
-                    class="btn btn-warning"
-                    type="reset">איפוס
-                <i class="fa fa-btn fa-remove"></i>
-            </button>
+            <div class="submit col-sm-12 col-md-2">
+                <button
+                        type="submit"
+                        class="btn btn-primary col-sm-3 col-md-6"> הוסף
+                    <i class="fa fa-btn fa-plus"></i>
+                </button>
+
+                <button
+                        class="btn btn-warning col-sm-5 col-md-5"
+                        type="reset">איפוס
+                    <i class="fa fa-btn fa-remove"></i>
+                </button>
+            </div>
+
         </div>
     </form>
 </div>
+
+<style>
+    .submit{
+        display: inline-block;
+        padding-top: 24px;
+    }
+
+    .submit button:first-child{
+        margin-left: 3px;
+    }
+</style>

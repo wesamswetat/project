@@ -12,7 +12,8 @@
                         ng-model="message.fullName"
                         type="text"
                         id="name"
-                        ng-maxlength="50"
+                        ng-minlength="4"
+                        ng-minlength-err-type="towChar"
                         class="form-control">
             </div>
 
@@ -22,6 +23,7 @@
                         required="required"
                         ng-model="message.phone"
                         ng-maxlength="12"
+                        ng-maxlength-err-type="maxChar"
                         type="text"
                         id="phone"
                         class="form-control">
@@ -34,6 +36,7 @@
                         ng-model="message.email"
                         type="email"
                         ng-maxlength="50"
+                        ng-email-err-type="email"
                         id="email"
                         class="form-control">
             </div>
@@ -46,6 +49,7 @@
                         type="text"
                         id="subject"
                         ng-maxlength="50"
+                        ng-maxlength-err-type="maxChar"
                         class="form-control">
             </div>
 
@@ -56,6 +60,7 @@
                         ng-model="message.message"
                         id="message"
                         ng-maxlength="250"
+                        ng-maxlength-err-type="maxChar"
                         class="form-control">
                 </textarea>
             </div>

@@ -190,7 +190,6 @@
                 }
             }
 
-            console.log(temp);
             if (Object.keys(temp.data).length > 0) {
                 $http({method: 'POST', url: URL + '/profels', data: temp})
                     .then(function successCallBack(response) {

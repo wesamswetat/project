@@ -18,6 +18,13 @@
                 scope.windowsTable = temporaryDataService.getArrayOfWindowsAfterCalculatorOfMedot();
                 scope.windowInfo = temporaryDataService.getWindowsFullObjectFromMySql();
 
+
+                scope.isShow = function () {
+                    return Object.keys(scope.windowsTable).length > 0;
+                };
+
+
+
             }
         }
 

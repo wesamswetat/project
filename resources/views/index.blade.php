@@ -12,9 +12,7 @@
     <!-- LIBRARYS OF  stylesheet -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/bootstrap-rtl.min.css')}}">
-
-
-
+    <link rel="stylesheet" href="{{asset('css/select.min.css')}}">
 
 
     <!-- MY  stylesheet -->
@@ -31,29 +29,28 @@
 </head>
 <body ng-controller="mainController">
 
-
 <nav-bar></nav-bar>
 <section class="container">
     <div class="row">
-        <div class="col-md-2" ui-view="right"></div>
-        <div class="col-md-8" ui-view="main"></div>
-        <div class="col-md-2" ui-view="left"></div>
+        {{--<div class="col-md-2" ui-view="right"></div>--}}
+        <div class="col-md-12" ui-view="main"></div>
+        {{--<div class="col-md-2" ui-view="left"></div>--}}
     </div>
 </section>
 
-<footer class="footer bg-success">
+<footer class="footer bg-success ">
     <div class="container">
         <div class="row">
-            <div ng-click="input('hearUs')" class="col-md-3 footer-item">
+            <div ng-click="input('hearUs')" class=" col-xs-4 col-md-3 footer-item">
                 <h5>האתר בהרצה נשמח לשמוע את דעתך</h5>
             </div>
-            <div ng-click="input('request')" class="col-md-3 footer-item">
+            <div ng-click="input('request')" class="col-xs-3 col-md-3 footer-item">
                 <h5>בקשה להוספת חלון/דלת</h5>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-2 col-md-3">
                 <h5></h5>
             </div>
-            <div ng-click="input('contact')"  class="col-md-2 footer-item">
+            <div ng-click="input('contact')"  class="col-xs-2 col-md-2 footer-item">
                 <h5 >צור קשר</h5>
             </div>
         </div>
@@ -65,6 +62,7 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="{{asset('js/bootstrap-rtl.min.js')}}"></script>
 <script src="{{asset('js/jcs-auto-validate.min.js')}}"></script>
+<script src="{{asset('js/select.min.js')}}"></script>
 
 
 <!-- MY App -->

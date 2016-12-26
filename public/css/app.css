@@ -2,6 +2,7 @@
 body{
     direction: rtl;
     padding-bottom: 60px;
+    min-width: 760px;
 }
 
 /* ################## Add Window Directive ###################*/
@@ -11,18 +12,25 @@ body{
     direction: rtl;
 }
 
+/* Sidenav  styles
+-------------------------------------------------- */
+
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
     position: relative;
+    min-width: 760px;
 }
 
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    min-width: 760px;
     /* Set the fixed height of the footer here */
-    height: 35px;
+
 }
 
 .footer-item{
@@ -33,5 +41,22 @@ html {
 
 .footer-item:hover{
     background-color: #1b6d85;
+    color: #fff;
+}
+
+/* ##################### UI SELECT RTL ################# */
+.ui-select-bootstrap .ui-select-match-text span {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    direction: rtl;
+    text-align: right;
+}
+.ui-select-bootstrap .ui-select-toggle>.caret {
+    position: absolute;
+    height: 10px;
+    top: 50%;
+    left: 10px !important;
+    margin-top: -2px;
 }
 

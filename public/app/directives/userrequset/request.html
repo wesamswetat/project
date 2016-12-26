@@ -12,6 +12,7 @@
                         ng-model="message.company"
                         type="text"
                         ng-maxlength="15"
+                        ng-maxlength-err-type="maxChar"
                         id="company"
                         class="form-control">
             </div>
@@ -23,6 +24,7 @@
                         ng-model="message.sedraName"
                         type="text"
                         ng-maxlength="15"
+                        ng-maxlength-err-type="maxChar"
                         id="sedraName"
                         class="form-control">
             </div>
@@ -34,6 +36,7 @@
                         ng-model="message.sedraNum"
                         type="text"
                         ng-maxlength="15"
+                        ng-maxlength-err-type="maxChar"
                         id="sedraNum"
                         class="form-control">
             </div>
@@ -44,6 +47,7 @@
                         ng-model="message.email"
                         type="email"
                         id="email"
+                        ng-email-err-type="email"
                         ng-maxlength="50"
                         placeholder="לא חובה"
                         class="form-control">
@@ -55,6 +59,7 @@
                         ng-model="message.message"
                         id="message"
                         ng-maxlength="250"
+                        ng-maxlength-err-type="maxChar"
                         placeholder="לא חובה"
                         class="form-control">
                 </textarea>

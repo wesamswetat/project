@@ -7,7 +7,7 @@
     var route = angular.module('alom');
 
     // MAIN BUTTONS the same array should de in localDataService.js
-    var navigationButtons = ["הוספת חלון", "חיתוך לפי חלון", "חיתוך לפי פרופיל", "הזמנת פרופילים", "הזמנת זכוכית", "הצעות מחיר עם סרטוטים"];
+    var navigationButtons = ["הוספת חלון", "חיתוך לפי חלון", "חיתוך לפי פרופיל", "הזמנת פרופילים", "הזמנת זכוכית"];
 
     route.config(function ($stateProvider, $urlRouterProvider) {
 

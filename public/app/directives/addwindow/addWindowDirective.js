@@ -34,7 +34,6 @@
                             scope.companySerials = temporaryDataService.getCompanySedrot(value) ||
                                 $http({method: 'GET', url: URL + '/company/' + value})
                                     .then(function successCallBack(response) {
-                                        console.log(response.data);
                                         scope.companySerials = response.data;
                                         temporaryDataService.setCompanySedrot(value, scope.companySerials);
                                     });

@@ -27,13 +27,9 @@
                 };
 
                 $timeout(function () {
-                    console.log(scope.window);
                     scope.hl = (scope.window.h_l) ;
                     scope.l = (scope.window.l_des) ;
                     scope.h = (scope.window.h_des) ;
-                    console.log(scope.hl);
-                    console.log(scope.h);
-                    console.log(scope.l);
 
                 });
 
@@ -42,12 +38,10 @@
                         scope.windowHeightWidthAndInfo.cost * scope.windowHeightWidthAndInfo.height[0] / 100 *
                         scope.windowHeightWidthAndInfo.width[0] / 100 ;
 
-                    console.log(scope.windowHeightWidthAndInfo.height[0]);
                     if (scope.hl.h > 1){
                         temp = 0;
                         for (i = 1 ; i < scope.hl.h ; i = i + 1){
                             temp = temp + scope.windowHeightWidthAndInfo.height[i];
-                            console.log(i);
                         }
                        if (temp > scope.windowHeightWidthAndInfo.height[0]){
                            scope.error = 'פתח גובה קטן מסך כל שאר הפתחים';

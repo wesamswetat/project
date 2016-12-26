@@ -6,16 +6,16 @@
     var print = angular.module('alom');
     print.directive('printDirective', printFunction);
 
-    function printFunction($timeout,  $window) {
-        return{
+    function printFunction($timeout, $window) {
+        return {
             restrict: 'EA',
-            scope:{
+            scope: {
                 printId: '@'
             },
             templateUrl: 'app/directives/print/print.html',
             link: function (scope, elem, attr) {
 
-                scope.print = function (id) {
+                scope.print = function () {
                     $timeout(function () {
                         $window.print();
                     });
